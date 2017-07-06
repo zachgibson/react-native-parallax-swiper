@@ -46,6 +46,7 @@ export default class ParallaxSwiper extends Component {
               </View>
             ))
           }
+          showsHorizontalScrollIndicator={false}
         />
       </View>
     );

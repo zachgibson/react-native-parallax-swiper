@@ -18,7 +18,7 @@ export default class Guco extends Component {
   state = { animatedValue: new Animated.Value(0) }
 
   render() {
-    const { ui, backgroundImages, backgroundColor, dividerWidth, parallaxStrength } = this.props;
+    const { ui, backgroundImages, backgroundColor, dividerWidth, parallaxStrength, showsHorizontalScrollIndicator } = this.props;
 
     return (
         <Animated.ScrollView
@@ -30,6 +30,7 @@ export default class Guco extends Component {
             [{ nativeEvent: { contentOffset: { x: this.state.animatedValue } } }],
             { useNativeDriver: true }
           )}
+          showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         >
           {
             backgroundImages.map((uri, i) => {
