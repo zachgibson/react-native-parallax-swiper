@@ -31,6 +31,7 @@ export default class Guco extends Component {
             { useNativeDriver: true }
           )}
           showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
+          onMomentumScrollEnd={this.props.onMomentumScrollEnd}
         >
           {
             backgroundImages.map((uri, i) => {

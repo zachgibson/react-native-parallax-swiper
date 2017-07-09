@@ -47,6 +47,7 @@ export default class ParallaxSwiper extends Component {
             ))
           }
           showsHorizontalScrollIndicator={false}
+          onMomentumScrollEnd={() => console.log('Swiper finished swiping')}
         />
       </View>
     );
