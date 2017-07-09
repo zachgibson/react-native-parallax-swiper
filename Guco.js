@@ -18,7 +18,7 @@ export default class Guco extends Component {
   state = { animatedValue: new Animated.Value(0) }
 
   render() {
-    const { ui, backgroundImages, backgroundColor, dividerWidth, parallaxStrength, showsHorizontalScrollIndicator } = this.props;
+    const { ui, backgroundImages, backgroundColor, dividerWidth, parallaxStrength, showsHorizontalScrollIndicator, dividerColor } = this.props;
 
     return (
         <Animated.ScrollView
@@ -59,7 +59,7 @@ export default class Guco extends Component {
                       {ui[i]}
                     </View>
                   </View>
-                  <View style={{ width: 8, height: 667 }} />
+                  <View style={{ width: 8, height: 667, backgroundColor: dividerColor ? dividerColor : 'transparent' }} />
                 </View>
               );
             })

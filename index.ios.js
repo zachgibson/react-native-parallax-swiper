@@ -22,9 +22,9 @@ const views = [
 ];
 
 const images = [
-  'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=',
-  'https://images.unsplash.com/photo-1459909633680-206dc5c67abb?dpr=2&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=',
-  'https://images.unsplash.com/photo-1490237014491-822aee911b99?dpr=2&auto=format&fit=crop&w=1500&h=1001&q=80&cs=tinysrgb&crop=&bg='
+  'https://images.unsplash.com/photo-1494249465471-5655b7878482?dpr=2&auto=format&fit=crop&w=1080&h=720',
+  'https://images.unsplash.com/photo-1459909633680-206dc5c67abb?dpr=2&auto=format&fit=crop&w=1080&h=720',
+  'https://images.unsplash.com/photo-1490237014491-822aee911b99?dpr=2&auto=format&fit=crop&w=1080&h=720'
 ];
 
 export default class ParallaxSwiper extends Component {
@@ -34,15 +34,14 @@ export default class ParallaxSwiper extends Component {
         <Guco
           dividerWidth={4}
           parallaxStrength={300}
-          backgroundColor="white"
+          dividerColor="white"
           backgroundImages={images}
           ui={
             views.map((view, i) => (
-              <View key={i} style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Image
-                  source={{ uri: images[i] }}
-                  style={{ width: 80, height: 80, borderRadius: 40 }}
-                />
+              <View key={i} style={styles.slideInnerContainer}>
+                <Text style={styles.slideText}>
+                  Slide {i}
+                </Text>
               </View>
             ))
           }
@@ -57,19 +56,17 @@ export default class ParallaxSwiper extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  slideInnerContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  slideText: {
+    fontSize: 36,
+    fontWeight: '900',
+    letterSpacing: -0.4,
   },
 });
 
