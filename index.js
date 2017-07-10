@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   View,
   ScrollView,
@@ -108,4 +108,22 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = ParallaxSwiper;
+ParallaxSwiper.propTypes = {
+  ui: PropTypes.element,
+  backgroundImages: PropTypes.element.isRequired,
+  backgroundColor: PropTypes.string,
+  dividerColor: PropTypes.string,
+  dividerWidth: PropTypes.number,
+  parallaxStrength: PropTypes.number,
+  showsHorizontalScrollIndicator: PropTypes.bool,
+};
+
+ParallaxSwiper.defaultProps = {
+  backgroundColor: 'black',
+  dividerColor: 'black',
+  dividerWidth: 8,
+  parallaxStrength: 80,
+  showsHorizontalScrollIndicator: false,
+};
+
+export default ParallaxSwiper;
