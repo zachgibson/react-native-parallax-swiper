@@ -13,7 +13,7 @@ const {
   height: deviceHeight,
 } = Dimensions.get('window');
 
-export default class Guco extends Component {
+class ParallaxSwiper extends Component {
   state = { animatedValue: new Animated.Value(0) };
 
   render() {
@@ -36,10 +36,9 @@ export default class Guco extends Component {
           horizontal
           pagingEnabled
           scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [{
-              nativeEvent: { contentOffset: { x: this.state.animatedValue } },
-            }],
+          onScroll={Animated.event([{
+            nativeEvent: { contentOffset: { x: this.state.animatedValue } },
+          }],
             { useNativeDriver: true }
           )}
           showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
@@ -53,14 +52,12 @@ export default class Guco extends Component {
                     <Animated.Image
                       style={[styles.backgroundImage, {
                         left: i * -parallaxStrength,
-                        transform: [
-                          {
-                            translateX: this.state.animatedValue.interpolate({
-                              inputRange: [0, (deviceWidth + dividerWidth)],
-                              outputRange: [0, parallaxStrength],
-                            })
-                          }
-                        ]
+                        transform: [{
+                          translateX: this.state.animatedValue.interpolate({
+                            inputRange: [0, (deviceWidth + dividerWidth)],
+                            outputRange: [0, parallaxStrength],
+                          })
+                        }]
                       }]}
                       source={{ uri }}
                     />
@@ -110,3 +107,5 @@ const styles = StyleSheet.create({
     height: deviceHeight,
   },
 });
+
+module.exports = ParallaxSwiper;
