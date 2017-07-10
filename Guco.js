@@ -14,20 +14,32 @@ const {
 } = Dimensions.get('window');
 
 export default class Guco extends Component {
-
-  state = { animatedValue: new Animated.Value(0) }
+  state = { animatedValue: new Animated.Value(0) };
 
   render() {
-    const { ui, backgroundImages, backgroundColor, dividerWidth, parallaxStrength, showsHorizontalScrollIndicator, dividerColor } = this.props;
+    const {
+      ui,
+      backgroundImages,
+      backgroundColor,
+      dividerWidth,
+      parallaxStrength,
+      showsHorizontalScrollIndicator,
+      dividerColor,
+    } = this.props;
 
     return (
         <Animated.ScrollView
-          style={{ width: (deviceWidth + dividerWidth), backgroundColor }}
+          style={{
+            width: (deviceWidth + dividerWidth),
+            backgroundColor,
+          }}
           horizontal
           pagingEnabled
           scrollEventThrottle={1}
           onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { x: this.state.animatedValue } } }],
+            [{
+              nativeEvent: { contentOffset: { x: this.state.animatedValue } },
+            }],
             { useNativeDriver: true }
           )}
           showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
@@ -36,10 +48,7 @@ export default class Guco extends Component {
           {
             backgroundImages.map((uri, i) => {
               return (
-                <View
-                  key={i}
-                  style={[styles.slideOuterContainer, { width: (deviceWidth + dividerWidth) }]}
-                >
+                <View key={i} style={styles.slideOuterContainer}>
                   <View style={styles.slideInnerContainer}>
                     <Animated.Image
                       style={[styles.backgroundImage, {
@@ -55,11 +64,22 @@ export default class Guco extends Component {
                       }]}
                       source={{ uri }}
                     />
-                    <View style={{ width: 375, height: 667 }}>
+                    <View style={styles.uiContainer}>
                       {ui[i]}
                     </View>
                   </View>
-                  <View style={{ width: 8, height: 667, backgroundColor: dividerColor ? dividerColor : 'transparent' }} />
+                  <View
+                    style={[
+                      styles.divider,
+                      {
+                        width: dividerWidth,
+                        backgroundColor: (i !== backgroundImages.length - 1) ?
+                          dividerColor
+                        :
+                          'transparent',
+                      }
+                    ]}
+                  />
                 </View>
               );
             })
@@ -75,10 +95,18 @@ const styles = StyleSheet.create({
   },
   slideInnerContainer: {
     overflow: 'hidden',
+    width: deviceWidth,
   },
   backgroundImage: {
     position: 'absolute',
     width: deviceWidth,
+    height: deviceHeight,
+  },
+  uiContainer: {
+    width: deviceWidth,
+    height: deviceHeight,
+  },
+  divider: {
     height: deviceHeight,
   },
 });
