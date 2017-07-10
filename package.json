@@ -1,0 +1,21 @@
+{
+  "name": "react-native-parallax-swiper",
+  "version": "0.0.1",
+  "description": "Full Screen Parallax Swiper Allowing Arbitrary UI Injection",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachgibson/react-native-parallax-swiper.git"
+  },
+  "keywords": [
+    "react-native-component",
+    "react-native",
+    "ios",
+    "parallax",
+    "scrollable",
+    "swiper"
+  ],
+  "author": "Zach Gibson",
+  "license": "MIT",
+  "homepage": "https://github.com/zachgibson/react-native-parallax-swiper#react-native-parallax-swiper"
+}
