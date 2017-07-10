@@ -1,0 +1,1 @@
+# React Native Parallax Swiper
