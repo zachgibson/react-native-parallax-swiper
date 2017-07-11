@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
 
 ParallaxSwiper.propTypes = {
   ui: PropTypes.element,
-  backgroundImages: PropTypes.element.isRequired,
+  backgroundImages: PropTypes.array.isRequired,
   backgroundColor: PropTypes.string,
   dividerColor: PropTypes.string,
   dividerWidth: PropTypes.number,
