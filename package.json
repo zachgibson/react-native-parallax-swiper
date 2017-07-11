@@ -17,5 +17,11 @@
   ],
   "author": "Zach Gibson",
   "license": "MIT",
-  "homepage": "https://github.com/zachgibson/react-native-parallax-swiper#react-native-parallax-swiper"
+  "homepage": "https://github.com/zachgibson/react-native-parallax-swiper#react-native-parallax-swiper",
+  "bugs": {
+    "url": "https://github.com/zachgibson/react-native-parallax-swiper/issues"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }
