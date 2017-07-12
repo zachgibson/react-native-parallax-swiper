@@ -13,12 +13,19 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 <ParallaxSwiper
   parallaxStrength={80}
   dividerWidth={8}
-  dividerColor="white"
+  dividerColor="black"
   backgroundColor="#bae"
-  onMomentumScrollEnd={sweetFunction}
+  onMomentumScrollEnd={() => console.log('💩')}
 >
-  <View style={styles.dopeStyles} backgroundImage={uri}>
-    {...arbitraryUI}
+  <View
+    style={{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+     }}
+     backgroundImage={'https://goo.gl/7Mvjji'}
+    >
+    <Text>Pass Arbitrary JSX to ParallaxSwiper as Children</Text>
   </View>
 </ParallaxSwiper>
 ```
@@ -31,6 +38,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | dividerColor | string | color of slide divider |
 | backgroundColor | string | color of main scrollview background |
 | onMomentumScrollEnd | function | called when scrollview completed scrolling |
+| children | JSX | pass arbitrary JSX into slide |
 
 ## Copyright
 Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
