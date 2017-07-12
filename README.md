@@ -33,4 +33,4 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | onMomentumScrollEnd | function | called when scrollview completed scrolling |
 
 ## Copyright
-© 2017 Zach Gibson. Licensed under the MIT license.
+Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
