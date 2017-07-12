@@ -8,31 +8,24 @@ import {
   Dimensions,
 } from 'react-native';
 
-const {
-  width: deviceWidth,
-  height: deviceHeight,
-} = Dimensions.get('window');
+const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiper extends Component {
   state = { animatedValue: new Animated.Value(0) };
 
   render() {
     const {
-      ui,
-      backgroundImages,
       backgroundColor,
       dividerWidth,
       parallaxStrength,
       showsHorizontalScrollIndicator,
       dividerColor,
+      children,
     } = this.props;
 
     return (
         <Animated.ScrollView
-          style={{
-            width: (deviceWidth + dividerWidth),
-            backgroundColor,
-          }}
+          style={{ width: (deviceWidth + dividerWidth), backgroundColor }}
           horizontal
           pagingEnabled
           scrollEventThrottle={1}
@@ -45,39 +38,39 @@ class ParallaxSwiper extends Component {
           onMomentumScrollEnd={this.props.onMomentumScrollEnd}
         >
           {
-            backgroundImages.map((uri, i) => {
+            React.Children.map(children, (child, i) => {
               return (
-                <View key={i} style={styles.slideOuterContainer}>
-                  <View style={styles.slideInnerContainer}>
-                    <Animated.Image
-                      style={[styles.backgroundImage, {
-                        left: i * -parallaxStrength,
-                        transform: [{
-                          translateX: this.state.animatedValue.interpolate({
-                            inputRange: [0, (deviceWidth + dividerWidth)],
-                            outputRange: [0, parallaxStrength],
-                          })
-                        }]
-                      }]}
-                      source={{ uri }}
-                    />
-                    <View style={styles.uiContainer}>
-                      {ui[i]}
+                  <View key={i} style={styles.slideOuterContainer}>
+                    <View style={styles.slideInnerContainer}>
+                      <Animated.Image
+                        style={[styles.backgroundImage, {
+                          left: i * -parallaxStrength,
+                          transform: [{
+                            translateX: this.state.animatedValue.interpolate({
+                              inputRange: [0, (deviceWidth + dividerWidth)],
+                              outputRange: [0, parallaxStrength],
+                            })
+                          }]
+                        }]}
+                        source={{ uri: child.props.backgroundImage }}
+                      />
+                      <View style={styles.uiContainer}>
+                        {child}
+                      </View>
                     </View>
+                    <View
+                      style={[
+                        styles.divider,
+                        {
+                          width: dividerWidth,
+                          backgroundColor: (i !== children.length - 1) ?
+                            dividerColor
+                          :
+                            'transparent',
+                        }
+                      ]}
+                    />
                   </View>
-                  <View
-                    style={[
-                      styles.divider,
-                      {
-                        width: dividerWidth,
-                        backgroundColor: (i !== backgroundImages.length - 1) ?
-                          dividerColor
-                        :
-                          'transparent',
-                      }
-                    ]}
-                  />
-                </View>
               );
             })
           }
@@ -109,8 +102,6 @@ const styles = StyleSheet.create({
 });
 
 ParallaxSwiper.propTypes = {
-  ui: PropTypes.element,
-  backgroundImages: PropTypes.array.isRequired,
   backgroundColor: PropTypes.string,
   dividerColor: PropTypes.string,
   dividerWidth: PropTypes.number,
