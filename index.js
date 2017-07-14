@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import {
   View,
-  ScrollView,
-  Image,
   Animated,
   StyleSheet,
   Dimensions,
@@ -24,56 +22,55 @@ class ParallaxSwiper extends Component {
     } = this.props;
 
     return (
-        <Animated.ScrollView
-          style={{ width: (deviceWidth + dividerWidth), backgroundColor }}
-          horizontal
-          pagingEnabled
-          scrollEventThrottle={1}
-          onScroll={Animated.event([{
-            nativeEvent: { contentOffset: { x: this.state.animatedValue } },
-          }],
-            { useNativeDriver: true }
-          )}
-          showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
-          onMomentumScrollEnd={this.props.onMomentumScrollEnd}
-        >
-          {
-            React.Children.map(children, (child, i) => {
-              return (
-                  <View key={i} style={styles.slideOuterContainer}>
-                    <View style={styles.slideInnerContainer}>
-                      <Animated.Image
-                        style={[styles.backgroundImage, {
-                          left: i * -parallaxStrength,
-                          transform: [{
-                            translateX: this.state.animatedValue.interpolate({
-                              inputRange: [0, (deviceWidth + dividerWidth)],
-                              outputRange: [0, parallaxStrength],
-                            })
-                          }]
-                        }]}
-                        source={{ uri: child.props.backgroundImage }}
-                      />
-                      <View style={styles.uiContainer}>
-                        {child}
-                      </View>
-                    </View>
-                    <View
-                      style={[
-                        styles.divider,
-                        {
-                          width: dividerWidth,
-                          backgroundColor: (i !== children.length - 1) ?
-                            dividerColor
-                          :
-                            'transparent',
-                        }
-                      ]}
-                    />
+      <Animated.ScrollView
+        style={{ width: (deviceWidth + dividerWidth), backgroundColor }}
+        horizontal
+        pagingEnabled
+        scrollEventThrottle={1}
+        onScroll={Animated.event([{
+          nativeEvent: { contentOffset: { x: this.state.animatedValue } },
+        }],
+          { useNativeDriver: true },
+        )}
+        showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
+        onMomentumScrollEnd={this.props.onMomentumScrollEnd}
+      >
+        {
+          React.Children.map(children, (child, i) => {
+            const dividerBackgroundColor = (i !== children.length - 1) ? dividerColor : 'transparent';
+
+            return (
+              <View key={i} style={styles.slideOuterContainer}>
+                <View style={styles.slideInnerContainer}>
+                  <Animated.Image
+                    style={[styles.backgroundImage, {
+                      left: i * -parallaxStrength,
+                      transform: [{
+                        translateX: this.state.animatedValue.interpolate({
+                          inputRange: [0, (deviceWidth + dividerWidth)],
+                          outputRange: [0, parallaxStrength],
+                        }),
+                      }],
+                    }]}
+                    source={{ uri: child.props.backgroundImage }}
+                  />
+                  <View style={styles.uiContainer}>
+                    {child}
                   </View>
-              );
-            })
-          }
+                </View>
+                <View
+                  style={[
+                    styles.divider,
+                    {
+                      width: dividerWidth,
+                      backgroundColor: dividerBackgroundColor,
+                    },
+                  ]}
+                />
+              </View>
+            );
+          })
+        }
       </Animated.ScrollView>
     );
   }
@@ -107,6 +104,8 @@ ParallaxSwiper.propTypes = {
   dividerWidth: PropTypes.number,
   parallaxStrength: PropTypes.number,
   showsHorizontalScrollIndicator: PropTypes.bool,
+  onMomentumScrollEnd: PropTypes.func,
+  children: React.PropTypes.node,
 };
 
 ParallaxSwiper.defaultProps = {
