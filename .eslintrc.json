@@ -14,15 +14,16 @@
       "prefer-class-properties"
   ],
   "rules": {
-    "no-use-before-define": [0],
-    "no-underscore-dangle": [0],
-    "import/no-named-as-default": [0],
-    "react/jsx-filename-extension": [0],
+    "no-use-before-define": 0,
+    "no-underscore-dangle": 0,
+    "import/no-named-as-default": 0,
+    "react/jsx-filename-extension": 0,
     "react-native/no-unused-styles": 2,
     "react-native/split-platform-components": 2,
     "react-native/no-inline-styles": 2,
-    "react-native/no-color-literals": 2,
+    "react-native/no-color-literals": 0,
     "class-property/class-property-semicolon": 2,
-    "prefer-class-properties/prefer-class-properties": 2
+    "prefer-class-properties/prefer-class-properties": 2,
+    "react/require-default-props": 0
   }
 }
