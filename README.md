@@ -1,8 +1,10 @@
 # React Native Parallax Swiper
 Configurable parallax swiper based on an iOS pattern. Inject whatever UI you want.
 
+This is a quick re-make of the UI Twitter Moments uses. As you can see GIFs work just fine. 🙌
 ![Example 1](https://raw.githubusercontent.com/zachgibson/react-native-parallax-swiper/master/example-1.gif)
 
+This example injects [react-native-zoomable](https://github.com/LeBlaaanc/react-native-zoomable) to create a media lightbox with parallax swiping and media zoom.
 ![Example 2](https://raw.githubusercontent.com/zachgibson/react-native-parallax-swiper/master/example-2.gif)
 
 You can see this effect in apps like:
