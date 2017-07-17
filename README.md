@@ -1,6 +1,10 @@
 # React Native Parallax Swiper
 Configurable parallax swiper based on an iOS pattern. Inject whatever UI you want.
 
+![Example 1](https://raw.githubusercontent.com/zachgibson/react-native-parallax-swiper/master/example-1.gif)
+
+![Example 2](https://raw.githubusercontent.com/zachgibson/react-native-parallax-swiper/master/example-2.gif)
+
 You can see this effect in apps like:
 - iOS Photos (Camera Roll)
 - Twitter Moments
