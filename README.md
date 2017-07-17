@@ -49,6 +49,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | backgroundColor | string | color of main scrollview background |
 | onMomentumScrollEnd | function | called when scrollview completed scrolling |
 | children | JSX | pass arbitrary JSX into slide |
+| backgroundImageResizeMode | string | how your background image should resize |
 
 ## Copyright
 Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
