@@ -48,10 +48,10 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | parallaxStrength | number | how much parallax you want |
 | dividerWidth | number | width of slide divider |
 | dividerColor | string | color of slide divider |
+| backgroundImageResizeMode | string | how your background image should resize |
 | backgroundColor | string | color of main scrollview background |
 | onMomentumScrollEnd | function | called when scrollview completed scrolling |
-| children | JSX | pass arbitrary JSX into slide |
-| backgroundImageResizeMode | string | how your background image should resize |
+| children | ReactComponents | pass arbitrary JSX into slide |
 
 ## Copyright
 Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
