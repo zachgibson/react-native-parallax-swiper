@@ -15,7 +15,6 @@ class ParallaxSwiper extends Component {
       dividerColor,
       children,
       backgroundImageResizeMode,
-      hasBackgroundImage,
     } = this.props;
 
     return (
@@ -42,7 +41,7 @@ class ParallaxSwiper extends Component {
           return (
             <View key={i} style={styles.slideOuterContainer}>
               <View style={styles.slideInnerContainer}>
-                {hasBackgroundImage &&
+                {child.props.backgroundImage &&
                   <Animated.Image
                     style={[
                       styles.backgroundImage,
@@ -61,11 +60,11 @@ class ParallaxSwiper extends Component {
                     ]}
                     source={{ uri: child.props.backgroundImage }}
                   />}
-                {hasBackgroundImage &&
+                {child.props.backgroundImage &&
                   <View style={styles.uiContainer}>
                     {child}
                   </View>}
-                {!hasBackgroundImage &&
+                {!child.props.backgroundImage &&
                   <Animated.View
                     style={[
                       styles.uiContainer,
@@ -133,7 +132,6 @@ ParallaxSwiper.propTypes = {
   onMomentumScrollEnd: PropTypes.func,
   children: PropTypes.node,
   backgroundImageResizeMode: PropTypes.string,
-  hasBackgroundImage: PropTypes.bool,
 };
 
 ParallaxSwiper.defaultProps = {
@@ -143,7 +141,6 @@ ParallaxSwiper.defaultProps = {
   parallaxStrength: 80,
   showsHorizontalScrollIndicator: false,
   backgroundImageResizeMode: 'cover',
-  hasBackgroundImage: true,
 };
 
 export default ParallaxSwiper;
