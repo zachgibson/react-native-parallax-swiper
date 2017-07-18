@@ -7,6 +7,8 @@ This is a quick re-make of the UI Twitter Moments uses. As you can see GIFs work
 This example injects [react-native-zoomable](https://github.com/LeBlaaanc/react-native-zoomable) to create a media lightbox with parallax swiping and media zoom.
 ![Example 2](https://raw.githubusercontent.com/zachgibson/react-native-parallax-swiper/master/example-2.gif)
 
+*Pokémon artwork by [Daniel Mackey](https://dribbble.com/danielmackeyart)*
+
 You can see this effect in apps like:
 - iOS Photos (Camera Roll)
 - Twitter Moments
