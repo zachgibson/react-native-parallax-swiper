@@ -1,7 +1,7 @@
 # React Native Parallax Swiper
-Configurable parallax swiper based on an iOS pattern. **Uses Native Driver** for super smooth parallax.
+Configurable parallax swiper based on an iOS pattern. Uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
 
-### Ways to use this component
+## Ways to use this component
 
 1. You have a background image (GIFs included) that parallaxes while your UI moves at the ScrollView speed:
 
