@@ -12,6 +12,7 @@ Configurable parallax swiper based on an iOS pattern. Uses [Native Driver](http:
 ![Example 2](https://raw.githubusercontent.com/zachgibson/react-native-parallax-swiper/master/example-2.gif)
 
 ☝️ *[React Native Zoomable](https://github.com/LeBlaaanc/react-native-zoomable) for image zoom.*
+*Artwork by [Daniel Mackey](https://dribbble.com/danielmackeyart).*
 
 You can see this effect in apps like:
 - iOS Photos (Camera Roll)
