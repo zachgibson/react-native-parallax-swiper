@@ -6,31 +6,69 @@ const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 class ParallaxSwiper extends Component {
   state = { animatedValue: new Animated.Value(0) };
 
+  getParallaxStyles(i) {
+    const { parallaxStrength, dividerWidth, vertical } = this.props;
+
+    const horizontalStyles = {
+      left: i * -parallaxStrength,
+      transform: [
+        {
+          translateX: this.state.animatedValue.interpolate({
+            inputRange: [0, deviceWidth + dividerWidth],
+            outputRange: [0, parallaxStrength],
+          }),
+        },
+      ],
+    };
+
+    const verticalStyles = {
+      top: i * -parallaxStrength,
+      transform: [
+        {
+          translateY: this.state.animatedValue.interpolate({
+            inputRange: [0, deviceHeight],
+            outputRange: [0, parallaxStrength],
+          }),
+        },
+      ],
+    };
+
+    if (vertical) {
+      return verticalStyles;
+    }
+    return horizontalStyles;
+  }
+
   render() {
     const {
-      backgroundColor,
-      dividerWidth,
-      parallaxStrength,
-      showsHorizontalScrollIndicator,
-      dividerColor,
       children,
+      parallaxStrength,
+      backgroundColor,
+      dividerColor,
+      dividerWidth,
+      showsVerticalScrollIndicator,
+      showsHorizontalScrollIndicator,
+      vertical,
       backgroundImageResizeMode,
     } = this.props;
 
     return (
       <Animated.ScrollView
-        style={{ width: deviceWidth + dividerWidth, backgroundColor }}
-        horizontal
+        style={{ width: vertical ? deviceWidth : deviceWidth + dividerWidth, backgroundColor }}
+        horizontal={!vertical}
         pagingEnabled
         scrollEventThrottle={1}
         onScroll={Animated.event(
           [
             {
-              nativeEvent: { contentOffset: { x: this.state.animatedValue } },
+              nativeEvent: vertical
+                ? { contentOffset: { y: this.state.animatedValue } }
+                : { contentOffset: { x: this.state.animatedValue } },
             },
           ],
           { useNativeDriver: true },
         )}
+        showsVerticalScrollIndicator={showsVerticalScrollIndicator}
         showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
         onMomentumScrollEnd={this.props.onMomentumScrollEnd}
       >
@@ -39,24 +77,14 @@ class ParallaxSwiper extends Component {
             i !== children.length - 1 && children.length > 0 ? dividerColor : 'transparent';
 
           return (
-            <View key={i} style={styles.slideOuterContainer}>
+            <View key={i} style={{ flexDirection: vertical ? 'column' : 'row' }}>
               <View style={styles.slideInnerContainer}>
                 {child.props.backgroundImage &&
                   <Animated.Image
                     style={[
                       styles.backgroundImage,
-                      {
-                        resizeMode: backgroundImageResizeMode,
-                        left: i * -parallaxStrength,
-                        transform: [
-                          {
-                            translateX: this.state.animatedValue.interpolate({
-                              inputRange: [0, deviceWidth + dividerWidth],
-                              outputRange: [0, parallaxStrength],
-                            }),
-                          },
-                        ],
-                      },
+                      { resizeMode: backgroundImageResizeMode },
+                      this.getParallaxStyles(i),
                     ]}
                     source={{ uri: child.props.backgroundImage }}
                   />}
@@ -65,34 +93,18 @@ class ParallaxSwiper extends Component {
                     {child}
                   </View>}
                 {!child.props.backgroundImage &&
-                  <Animated.View
-                    style={[
-                      styles.uiContainer,
-                      {
-                        left: i * -parallaxStrength,
-                        transform: [
-                          {
-                            translateX: this.state.animatedValue.interpolate({
-                              inputRange: [0, deviceWidth + dividerWidth],
-                              outputRange: [0, parallaxStrength],
-                            }),
-                          },
-                        ],
-                      },
-                    ]}
-                  >
+                  <Animated.View style={[styles.uiContainer, this.getParallaxStyles(i)]}>
                     {child}
                   </Animated.View>}
               </View>
-              <View
-                style={[
-                  styles.divider,
-                  {
+              {!vertical &&
+                <View
+                  style={{
                     width: dividerWidth,
+                    height: deviceHeight,
                     backgroundColor: dividerBackgroundColor,
-                  },
-                ]}
-              />
+                  }}
+                />}
             </View>
           );
         })}
@@ -102,12 +114,10 @@ class ParallaxSwiper extends Component {
 }
 
 const styles = StyleSheet.create({
-  slideOuterContainer: {
-    flexDirection: 'row',
-  },
   slideInnerContainer: {
     overflow: 'hidden',
     width: deviceWidth,
+    height: deviceHeight,
   },
   backgroundImage: {
     position: 'absolute',
@@ -116,9 +126,6 @@ const styles = StyleSheet.create({
   },
   uiContainer: {
     width: deviceWidth,
-    height: deviceHeight,
-  },
-  divider: {
     height: deviceHeight,
   },
 });
@@ -132,6 +139,8 @@ ParallaxSwiper.propTypes = {
   onMomentumScrollEnd: PropTypes.func,
   children: PropTypes.node,
   backgroundImageResizeMode: PropTypes.string,
+  vertical: PropTypes.bool,
+  showsVerticalScrollIndicator: PropTypes.bool,
 };
 
 ParallaxSwiper.defaultProps = {
@@ -141,6 +150,8 @@ ParallaxSwiper.defaultProps = {
   parallaxStrength: 80,
   showsHorizontalScrollIndicator: false,
   backgroundImageResizeMode: 'cover',
+  vertical: false,
+  showsVerticalScrollIndicator: false,
 };
 
 export default ParallaxSwiper;
