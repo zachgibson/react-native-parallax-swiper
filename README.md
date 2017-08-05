@@ -15,9 +15,10 @@ Configurable parallax swiper based on an iOS pattern. Uses [Native Driver](http:
 *Artwork by [Daniel Mackey](https://dribbble.com/danielmackeyart).*
 
 You can see this effect in apps like:
-- iOS Photos (Camera Roll)
-- Twitter Moments
-- Kylie Jenner app 😅
+- [iOS Photos (Camera Roll)](https://goo.gl/GY3bFQ)
+- [Twitter Moments](https://goo.gl/CvzCQA)
+- [Kylie Jenner app](https://goo.gl/yDB69S) 😅
+- [Vevo app (older version)](https://goo.gl/FMSSeF)
 
 ## Add it to your project
 Run ```npm install react-native-parallax-swiper --save```
@@ -52,13 +53,17 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 ## Props
 | Prop | Type | Description |
 |-----------------|----------|--------------------------------------------------------------|
-| parallaxStrength | number | how much parallax you want |
-| dividerWidth | number | width of slide divider |
-| dividerColor | string | color of slide divider |
-| backgroundImageResizeMode | string | how your background image should resize |
-| backgroundColor | string | color of main scrollview background |
-| onMomentumScrollEnd | function | called when scrollview completed scrolling |
-| children | ReactComponents | pass arbitrary JSX into slide |
+| parallaxStrength | number | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
+| dividerWidth | number | The width of the divider between each slide. (horizontal only) |
+| dividerColor | string | Color of divider. |
+| backgroundImage | string | The image source. If used this becomes the background image that parallaxes. (remote URL only for now) |
+| backgroundImageResizeMode | string | Determines how to resize the image. |
+| backgroundColor | string | The main view’s background color. |
+| onMomentumScrollEnd | function | Called when ScrollView stops scrolling. |
+| children | ReactComponents | JSX to inject into the slide. |
+| vertical | boolean | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. |
+| showsHorizontalScrollIndicator | boolean | When true, shows a horizontal scroll indicator. The default value is false. |
+| showsVerticalScrollIndicator | boolean | When true, shows a vertical scroll indicator. The default value is false. |
 
 ## Copyright
 Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
