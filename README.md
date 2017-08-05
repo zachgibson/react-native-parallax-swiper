@@ -52,7 +52,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 
 ## Props
 | Prop | Type | Default | Description |
-|---|---|---|---|---|
+|---|---|---|---|
 | parallaxStrength | number | `80` | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
 | dividerWidth | number | `8` | The width of the divider between each slide. (horizontal only) |
 | dividerColor | string | `black` | Color of divider. |
