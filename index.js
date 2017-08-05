@@ -141,6 +141,7 @@ ParallaxSwiper.propTypes = {
   backgroundImageResizeMode: PropTypes.string,
   vertical: PropTypes.bool,
   showsVerticalScrollIndicator: PropTypes.bool,
+  backgroundImage: PropTypes.string,
 };
 
 ParallaxSwiper.defaultProps = {
