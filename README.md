@@ -53,17 +53,17 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 ## Props
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| __`parallaxStrength`__ | number | `80` | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
-| __`dividerWidth`__ | number | `8` | The width of the divider between each slide. (horizontal only) |
-| __`dividerColor`__ | string | `black` | Color of divider. |
-| __`backgroundImage`__ | string | `N/A` | The image source. If used this becomes the background image that parallaxes. (remote URL only for now) |
-| __`backgroundImageResizeMode`__ | string | `cover` | Determines how to resize the image. |
-| __`backgroundColor`__ | string | `black` | The main view’s background color. |
-| __`onMomentumScrollEnd`__ | function | `N/A` | Called when ScrollView stops scrolling. |
-| __`children`__ | ReactComponents | `N/A` | JSX to inject into the slide. |
-| __`vertical`__ | boolean | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. |
-| __`showsHorizontalScrollIndicator`__ | boolean | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
-| __`showsVerticalScrollIndicator`__ | boolean | `false` | When true, shows a vertical scroll indicator. The default value is false. |
+| __`parallaxStrength`__ | _Number_ | `80` | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
+| __`dividerWidth`__ | _Number_ | `8` | The width of the divider between each slide. (horizontal only) |
+| __`dividerColor`__ | _String_ | `black` | Color of divider. |
+| __`backgroundImage`__ | _String_ | `N/A` | The image source. If used this becomes the background image that parallaxes. (remote URL only for now) |
+| __`backgroundImageResizeMode`__ | _String_ | `cover` | Determines how to resize the image. |
+| __`backgroundColor`__ | _String_ | `black` | The main view’s background color. |
+| __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Called when ScrollView stops scrolling. |
+| __`children`__ | _ReactComponents_ | `N/A` | JSX to inject into the slide. |
+| __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. |
+| __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
+| __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
 
 ## Copyright
 Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
