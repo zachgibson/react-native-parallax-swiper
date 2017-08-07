@@ -1,3 +1,5 @@
+> This project is currently in __beta and APIs are subject to change.__
+
 # React Native Parallax Swiper
 Configurable parallax swiper based on an iOS pattern. Uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
 
@@ -66,4 +68,4 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
 
 ## Copyright
-Copyright (c) 2017 Zachary Gibson Licensed under the MIT license.
+Copyright (c) 2017 [Zachary Gibson](http://zachgibsondesign.com/) Licensed under the MIT license.
