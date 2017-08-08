@@ -67,5 +67,14 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
 
+## TODO
+- [ ] Create examples
+- [ ] Expose current index
+- [ ] Expose ScrollView [scrollTo Method](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollto)
+- [ ] Expose ScrollView [contentOffset](http://facebook.github.io/react-native/releases/0.47/docs/animated.html#handling-gestures-and-other-events)
+- [ ] Add drag effects e.g. zoom, blur, darken
+- [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
+- [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
+
 ## Copyright
 Copyright (c) 2017 [Zachary Gibson](http://zachgibsondesign.com/) Licensed under the MIT license.
