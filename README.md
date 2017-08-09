@@ -1,7 +1,10 @@
 > This project is currently in __beta and APIs are subject to change.__
 
 # React Native Parallax Swiper
-Configurable parallax swiper based on an iOS pattern. Uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
+Configurable parallax swiper that uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
+
+## Wait wait wait, another parallax component?
+Yes. Another parallax component, cause you know parallaxers are lit and stuff right? NAH; Actually this component was created to emulate a specific iOS pattern that no react-native-parallax-whatever previously delivered. The idea here is to use native ScrollView, paging, and a native driver for 60 FPS. You can see this pattern in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), and the [Vevo app](https://goo.gl/FMSSeF) (vertical style).
 
 ## Ways to use this component
 
@@ -15,12 +18,6 @@ Configurable parallax swiper based on an iOS pattern. Uses [Native Driver](http:
 
 ☝️ *[React Native Zoomable](https://github.com/LeBlaaanc/react-native-zoomable) for image zoom.*
 *Artwork by [Daniel Mackey](https://dribbble.com/danielmackeyart).*
-
-You can see this effect in apps like:
-- [iOS Photos (Camera Roll)](https://goo.gl/GY3bFQ)
-- [Twitter Moments](https://goo.gl/CvzCQA)
-- [Kylie Jenner app](https://goo.gl/yDB69S) 😅
-- [Vevo app (older version)](https://goo.gl/FMSSeF)
 
 ## Add it to your project
 Run ```npm install react-native-parallax-swiper --save```
