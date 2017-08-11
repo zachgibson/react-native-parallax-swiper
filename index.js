@@ -54,6 +54,7 @@ class ParallaxSwiper extends Component {
 
     return (
       <Animated.ScrollView
+        scrollEnabled={this.props.scrollEnabled}
         style={{ width: vertical ? deviceWidth : deviceWidth + dividerWidth, backgroundColor }}
         horizontal={!vertical}
         pagingEnabled
