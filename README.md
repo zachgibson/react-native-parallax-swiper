@@ -68,6 +68,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [ ] Create examples
 - [ ] Expose current index
 - [ ] Expose ScrollView [scrollTo Method](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollto)
+- [ ] Fix Android
 - [ ] Expose ScrollView [contentOffset](http://facebook.github.io/react-native/releases/0.47/docs/animated.html#handling-gestures-and-other-events)
 - [ ] Add drag effects e.g. zoom, blur, darken
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
