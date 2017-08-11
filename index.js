@@ -90,7 +90,7 @@ class ParallaxSwiper extends Component {
                     source={{ uri: child.props.backgroundImage }}
                   />}
                 {child.props.backgroundImage &&
-                  <View style={styles.uiContainer}>
+                  <View pointerEvents="box-none" style={styles.uiContainer}>
                     {child}
                   </View>}
                 {!child.props.backgroundImage &&
