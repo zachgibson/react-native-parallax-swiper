@@ -3,8 +3,8 @@
 # React Native Parallax Swiper
 Configurable parallax swiper that uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
 
-## Wait wait wait, another parallax component?
-Yes. Another parallax component, cause you know parallaxers are lit and stuff right? NAH; Actually this component was created to emulate a specific iOS pattern that no react-native-parallax-whatever previously delivered. The idea here is to use native ScrollView, paging, and a native driver for 60 FPS. You can see this pattern in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), and the [Vevo app](https://goo.gl/FMSSeF) (vertical style).
+## Wait, another parallax component?
+Yeah, another parallax component, cause you know parallaxers are lit and stuff right? Nah, this component was created to emulate a specific iOS pattern that no react-native-parallax-whatever previously delivered. Native ScrollView, paging, and native driver for 60FPS. You can see this pattern in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), and the [Vevo app](https://goo.gl/FMSSeF).
 
 ## Ways to use this component
 
@@ -72,6 +72,9 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [ ] Add drag effects e.g. zoom, blur, darken
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
 - [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
+
+## Questions or suggestions?
+Hit me up on [Twitter](https://twitter.com/zacharykeith_), or create an [issue](https://github.com/zachgibson/react-native-parallax-swiper/issues).
 
 ## Copyright
 Copyright (c) 2017 [Zachary Gibson](http://zachgibsondesign.com/) Licensed under the MIT license.
