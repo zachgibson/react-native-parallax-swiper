@@ -74,6 +74,10 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
 - [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
 
+## Contributors
+| [<img src="https://avatars0.githubusercontent.com/u/2807897?v=4&s=460" width="80px;"/><br /><sub>Chris LeBlanc</sub>](https://github.com/LeBlaaanc)<br />[💻]
+| :---: |
+
 ## Questions or suggestions?
 Hit me up on [Twitter](https://twitter.com/zacharykeith_), or create an [issue](https://github.com/zachgibson/react-native-parallax-swiper/issues).
 
