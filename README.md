@@ -3,9 +3,6 @@
 # React Native Parallax Swiper
 Configurable parallax swiper that uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
 
-## Wait, another parallax component?
-Yeah, another parallax component, cause you know parallaxers are lit and stuff right? Nah, this component was created to emulate a specific iOS pattern that no react-native-parallax-whatever previously delivered. Native ScrollView, paging, and native driver for 60FPS. You can see this pattern in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), and the [Vevo app](https://goo.gl/FMSSeF).
-
 ## Ways to use this component
 
 1. You have a background image that parallaxes while your UI moves at the ScrollView speed
@@ -65,6 +62,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
 
 ## TODO
+- [ ] Create Expo demos
 - [ ] Create examples
 - [ ] Expose current index
 - [ ] Expose ScrollView [scrollTo Method](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollto)
@@ -73,6 +71,9 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [ ] Add drag effects e.g. zoom, blur, darken
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
 - [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
+
+## Why another parallax component?
+This component was created to emulate a specific iOS pattern that no react-native-parallax-whatever previously delivered. Native ScrollView, paging, and native driver for 60FPS. This style can be seen in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), and [Vevo’s app](https://goo.gl/FMSSeF).
 
 ## Contributors
 [<img src="https://avatars0.githubusercontent.com/u/2807897?v=4&s=460" width="80px;"/><br /><sub>Chris LeBlanc</sub>](https://github.com/LeBlaaanc)<br />[💻]|
