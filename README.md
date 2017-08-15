@@ -75,7 +75,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
 
 ## Contributors
-| [<img src="https://avatars0.githubusercontent.com/u/2807897?v=4&s=460" width="80px;"/><br /><sub>Chris LeBlanc</sub>](https://github.com/LeBlaaanc)<br />[💻]
+[<img src="https://avatars0.githubusercontent.com/u/2807897?v=4&s=460" width="80px;"/><br /><sub>Chris LeBlanc</sub>](https://github.com/LeBlaaanc)<br />[💻]|
 | :---: |
 
 ## Questions or suggestions?
