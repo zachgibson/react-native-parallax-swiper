@@ -16,8 +16,10 @@ Configurable parallax swiper that uses [Native Driver](http://facebook.github.io
 ☝️ *[React Native Zoomable](https://github.com/LeBlaaanc/react-native-zoomable) for image zoom.*
 *Artwork by [Daniel Mackey](https://dribbble.com/danielmackeyart).*
 
-## Add it to your project
-Run ```npm install react-native-parallax-swiper --save```
+## Installation
+```shell
+$ yarn add react-native-parallax-swiper
+```
 
 
 ## Usage
