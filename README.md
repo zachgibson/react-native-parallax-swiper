@@ -1,7 +1,5 @@
-> This project is currently in __beta and APIs are subject to change.__
-
 # React Native Parallax Swiper
-Configurable parallax swiper that uses [Native Driver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for super smooth parallax.
+Configurable parallax swiper that leverages [useNativeDriver](http://facebook.github.io/react-native/blog/2017/02/14/using-native-driver-for-animated.html) for 60FPS parallax. Allows for your own custom animations outside of this component.
 
 ## Ways to use this component
 
@@ -58,6 +56,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | __`backgroundImageResizeMode`__ | _String_ | `cover` | Determines how to resize the image. |
 | __`backgroundColor`__ | _String_ | `black` | The main view’s background color. |
 | __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Called when ScrollView stops scrolling. |
+| __`animatedScrollValue`__ | _Animated.Value_ | `0` | Optionally pass a new instance of Animated.Value to this prop to have access to the animated scroll value to animate your own components. |
 | __`children`__ | _ReactComponents_ | `N/A` | JSX to inject into the slide. |
 | __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. |
 | __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
