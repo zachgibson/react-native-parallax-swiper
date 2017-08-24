@@ -52,68 +52,73 @@ class ParallaxSwiper extends Component {
     } = this.props;
 
     return (
-      <Animated.ScrollView
-        scrollEnabled={this.props.scrollEnabled}
-        style={{ width: vertical ? deviceWidth : deviceWidth + dividerWidth, backgroundColor }}
-        horizontal={!vertical}
-        pagingEnabled
-        scrollEventThrottle={1}
-        onScroll={Animated.event(
-          [
-            {
-              nativeEvent: vertical
-                ? { contentOffset: { y: animatedScrollValue } }
-                : { contentOffset: { x: animatedScrollValue } },
-            },
-          ],
-          { useNativeDriver: true },
-        )}
-        showsVerticalScrollIndicator={showsVerticalScrollIndicator}
-        showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
-        onMomentumScrollEnd={this.props.onMomentumScrollEnd}
-      >
-        {React.Children.map(children, (child, i) => {
-          const dividerBackgroundColor =
-            i !== children.length - 1 && children.length > 0 ? dividerColor : 'transparent';
+      <View pointerEvents="box-none" style={styles.container}>
+        <Animated.ScrollView
+          scrollEnabled={this.props.scrollEnabled}
+          style={{ width: vertical ? deviceWidth : deviceWidth + dividerWidth, backgroundColor }}
+          horizontal={!vertical}
+          pagingEnabled
+          scrollEventThrottle={1}
+          onScroll={Animated.event(
+            [
+              {
+                nativeEvent: vertical
+                  ? { contentOffset: { y: animatedScrollValue } }
+                  : { contentOffset: { x: animatedScrollValue } },
+              },
+            ],
+            { useNativeDriver: true },
+          )}
+          showsVerticalScrollIndicator={showsVerticalScrollIndicator}
+          showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
+          onMomentumScrollEnd={this.props.onMomentumScrollEnd}
+        >
+          {React.Children.map(children, (child, i) => {
+            const dividerBackgroundColor =
+              i !== children.length - 1 && children.length > 0 ? dividerColor : 'transparent';
 
-          return (
-            <View key={i} style={{ flexDirection: vertical ? 'column' : 'row' }}>
-              <View style={styles.slideInnerContainer}>
-                {child.props.backgroundImage &&
-                  <Animated.Image
-                    style={[
-                      styles.backgroundImage,
-                      { resizeMode: backgroundImageResizeMode },
-                      this.getParallaxStyles(i),
-                    ]}
-                    source={{ uri: child.props.backgroundImage }}
+            return (
+              <View key={i} style={{ flexDirection: vertical ? 'column' : 'row' }}>
+                <View style={styles.slideInnerContainer}>
+                  {child.props.backgroundImage &&
+                    <Animated.Image
+                      style={[
+                        styles.backgroundImage,
+                        { resizeMode: backgroundImageResizeMode },
+                        this.getParallaxStyles(i),
+                      ]}
+                      source={{ uri: child.props.backgroundImage }}
+                    />}
+                  {child.props.backgroundImage &&
+                    <View pointerEvents="box-none" style={styles.uiContainer}>
+                      {child}
+                    </View>}
+                  {!child.props.backgroundImage &&
+                    <Animated.View style={[styles.uiContainer, this.getParallaxStyles(i)]}>
+                      {child}
+                    </Animated.View>}
+                </View>
+                {!vertical &&
+                  <View
+                    style={{
+                      width: dividerWidth,
+                      height: deviceHeight,
+                      backgroundColor: dividerBackgroundColor,
+                    }}
                   />}
-                {child.props.backgroundImage &&
-                  <View pointerEvents="box-none" style={styles.uiContainer}>
-                    {child}
-                  </View>}
-                {!child.props.backgroundImage &&
-                  <Animated.View style={[styles.uiContainer, this.getParallaxStyles(i)]}>
-                    {child}
-                  </Animated.View>}
               </View>
-              {!vertical &&
-                <View
-                  style={{
-                    width: dividerWidth,
-                    height: deviceHeight,
-                    backgroundColor: dividerBackgroundColor,
-                  }}
-                />}
-            </View>
-          );
-        })}
-      </Animated.ScrollView>
+            );
+          })}
+        </Animated.ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    ...StyleSheet.absoluteFillObject,
+  },
   slideInnerContainer: {
     overflow: 'hidden',
     width: deviceWidth,
