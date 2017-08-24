@@ -68,7 +68,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [ ] Expose current index
 - [ ] Expose ScrollView [scrollTo Method](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollto)
 - [ ] Fix Android
-- [ ] Expose ScrollView [contentOffset](http://facebook.github.io/react-native/releases/0.47/docs/animated.html#handling-gestures-and-other-events)
+- [x] Expose Animated.Value for animation outside of ParallaxSwiper
 - [ ] Add drag effects e.g. zoom, blur, darken
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
 - [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
