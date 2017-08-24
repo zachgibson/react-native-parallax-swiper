@@ -4,16 +4,14 @@ import { View, Animated, StyleSheet, Dimensions } from 'react-native';
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiper extends Component {
-  state = { animatedValue: new Animated.Value(0) };
-
   getParallaxStyles(i) {
-    const { parallaxStrength, dividerWidth, vertical } = this.props;
+    const { parallaxStrength, dividerWidth, vertical, animatedScrollValue } = this.props;
 
     const horizontalStyles = {
       left: i * -parallaxStrength,
       transform: [
         {
-          translateX: this.state.animatedValue.interpolate({
+          translateX: animatedScrollValue.interpolate({
             inputRange: [0, deviceWidth + dividerWidth],
             outputRange: [0, parallaxStrength],
           }),
@@ -25,7 +23,7 @@ class ParallaxSwiper extends Component {
       top: i * -parallaxStrength,
       transform: [
         {
-          translateY: this.state.animatedValue.interpolate({
+          translateY: animatedScrollValue.interpolate({
             inputRange: [0, deviceHeight],
             outputRange: [0, parallaxStrength],
           }),
@@ -50,6 +48,7 @@ class ParallaxSwiper extends Component {
       showsHorizontalScrollIndicator,
       vertical,
       backgroundImageResizeMode,
+      animatedScrollValue,
     } = this.props;
 
     return (
@@ -63,8 +62,8 @@ class ParallaxSwiper extends Component {
           [
             {
               nativeEvent: vertical
-                ? { contentOffset: { y: this.state.animatedValue } }
-                : { contentOffset: { x: this.state.animatedValue } },
+                ? { contentOffset: { y: animatedScrollValue } }
+                : { contentOffset: { x: animatedScrollValue } },
             },
           ],
           { useNativeDriver: true },
@@ -154,6 +153,7 @@ ParallaxSwiper.defaultProps = {
   backgroundImageResizeMode: 'cover',
   vertical: false,
   showsVerticalScrollIndicator: false,
+  animatedScrollValue: new Animated.Value(0),
 };
 
 export default ParallaxSwiper;
