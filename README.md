@@ -50,14 +50,14 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | __`parallaxStrength`__ | _Number_ | `80` | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
-| __`dividerWidth`__ | _Number_ | `8` | The width of the divider between each slide. (horizontal only) |
+| __`dividerWidth`__ | _Number_ | `8` | The width of the divider between each page. (horizontal only) |
 | __`dividerColor`__ | _String_ | `black` | Color of divider. |
 | __`backgroundImage`__ | _String_ | `N/A` | The image source. If used this becomes the background image that parallaxes. (remote URL only for now) |
 | __`backgroundImageResizeMode`__ | _String_ | `cover` | Determines how to resize the image. |
 | __`backgroundColor`__ | _String_ | `black` | The main view’s background color. |
 | __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Called when ScrollView stops scrolling. |
 | __`animatedScrollValue`__ | _Animated.Value_ | `0` | Optionally pass a new instance of Animated.Value to this prop to have access to the animated scroll value to animate your own components. |
-| __`children`__ | _ReactComponents_ | `N/A` | JSX to inject into the slide. |
+| __`children`__ | _ReactComponents_ | `N/A` | JSX to inject into the page. |
 | __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. |
 | __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
@@ -71,7 +71,7 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 - [x] Expose Animated.Value for animation outside of ParallaxSwiper
 - [ ] Add drag effects e.g. zoom, blur, darken
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
-- [ ] Create `<Slide/>` component to replace arbitrary React Children Components? 🤔
+- [ ] Create `<Page/>` component to replace arbitrary React Children Components? 🤔
 
 ## Why another parallax component?
 This component was created to emulate a specific iOS pattern that no react-native-parallax-whatever previously delivered. Native ScrollView, paging, and native driver for 60FPS. This style can be seen in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), and [Vevo’s app](https://goo.gl/FMSSeF).
