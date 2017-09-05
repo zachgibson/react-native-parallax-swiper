@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { View, Animated, StyleSheet, Dimensions } from 'react-native';
+import { View, Animated, StyleSheet, Dimensions, Image } from 'react-native';
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
@@ -35,24 +35,28 @@ class ParallaxSwiper extends Component {
     const { parallaxStrength, dividerWidth, vertical, animatedScrollValue } = this.props;
 
     const horizontalStyles = {
-      left: i * -parallaxStrength,
       transform: [
         {
           translateX: animatedScrollValue.interpolate({
-            inputRange: [0, deviceWidth + dividerWidth],
-            outputRange: [0, parallaxStrength],
+            inputRange: [
+              (i - 1) * deviceWidth + dividerWidth,
+              i * (deviceWidth + dividerWidth),
+              (i + 1) * deviceWidth + dividerWidth,
+            ],
+            outputRange: [-parallaxStrength, 0, parallaxStrength],
+            extrapolate: 'clamp',
           }),
         },
       ],
     };
 
     const verticalStyles = {
-      top: i * -parallaxStrength,
       transform: [
         {
           translateY: animatedScrollValue.interpolate({
-            inputRange: [0, deviceHeight],
-            outputRange: [0, parallaxStrength],
+            inputRange: [(i - 1) * deviceHeight, i * deviceHeight, (i + 1) * deviceHeight],
+            outputRange: [-parallaxStrength, 0, parallaxStrength],
+            extrapolate: 'clamp',
           }),
         },
       ],
@@ -86,6 +90,8 @@ class ParallaxSwiper extends Component {
       vertical,
       backgroundImageResizeMode,
       animatedScrollValue,
+      shouldRasterizeIOS,
+      renderToHardwareTextureAndroid,
     } = this.props;
 
     return (
@@ -116,23 +122,36 @@ class ParallaxSwiper extends Component {
               i !== children.length - 1 && children.length > 0 ? dividerColor : 'transparent';
 
             return (
-              <View key={i} style={{ flexDirection: vertical ? 'column' : 'row' }}>
+              <View key={i} style={{ zIndex: -i, flexDirection: 'row' }}>
                 <View style={styles.slideInnerContainer}>
                   {child.props.backgroundImage &&
-                    <Animated.Image
+                    <Animated.View
+                      shouldRasterizeIOS={shouldRasterizeIOS}
+                      renderToHardwareTextureAndroid={renderToHardwareTextureAndroid}
                       style={[
-                        styles.backgroundImage,
-                        { resizeMode: backgroundImageResizeMode },
+                        {
+                          position: 'absolute',
+                          width: deviceWidth,
+                          height: deviceHeight,
+                        },
                         this.getParallaxStyles(i),
                       ]}
-                      source={{ uri: child.props.backgroundImage }}
-                    />}
+                    >
+                      <Image
+                        style={[styles.backgroundImage, { resizeMode: backgroundImageResizeMode }]}
+                        source={{ uri: child.props.backgroundImage }}
+                      />
+                    </Animated.View>}
                   {child.props.backgroundImage &&
                     <View pointerEvents="box-none" style={styles.uiContainer}>
                       {child}
                     </View>}
                   {!child.props.backgroundImage &&
-                    <Animated.View style={[styles.uiContainer, this.getParallaxStyles(i)]}>
+                    <Animated.View
+                      shouldRasterizeIOS={shouldRasterizeIOS}
+                      renderToHardwareTextureAndroid={renderToHardwareTextureAndroid}
+                      style={[styles.uiContainer, this.getParallaxStyles(i)]}
+                    >
                       {child}
                     </Animated.View>}
                 </View>
@@ -185,6 +204,8 @@ ParallaxSwiper.propTypes = {
   vertical: PropTypes.bool,
   showsVerticalScrollIndicator: PropTypes.bool,
   backgroundImage: PropTypes.string,
+  shouldRasterizeIOS: PropTypes.bool,
+  renderToHardwareTextureAndroid: PropTypes.bool,
 };
 
 ParallaxSwiper.defaultProps = {
@@ -199,6 +220,8 @@ ParallaxSwiper.defaultProps = {
   animatedScrollValue: new Animated.Value(0),
   scrollToIndex: 0,
   onMomentumScrollEnd: () => console.log('Scroll ended'),
+  shouldRasterizeIOS: true,
+  renderToHardwareTextureAndroid: true,
 };
 
 export default ParallaxSwiper;
