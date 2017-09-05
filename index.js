@@ -4,6 +4,31 @@ import { View, Animated, StyleSheet, Dimensions } from 'react-native';
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiper extends Component {
+
+  componentWillReceiveProps(nextProps) {
+    this.scrollToIndex(nextProps.scrollToIndex);
+  }
+
+  scrollToIndex(index) {
+    const { vertical, dividerWidth, animatedScrollValue } = this.props;
+
+    index = vertical ? index * deviceHeight : index * (deviceWidth + dividerWidth);
+
+    if (!this.animatedScrollViewHasScrolled) {
+      animatedScrollValue.setValue(index);
+    }
+
+    this.refs.animatedScrollView._component.scrollTo({
+      x: vertical ? 0 : index,
+      y: vertical ? index : 0,
+      animated: true,
+    });
+
+    if (!this.animatedScrollViewHasScrolled) {
+      this.animatedScrollViewHasScrolled = true;
+    }
+  }
+
   getParallaxStyles(i) {
     const { parallaxStrength, dividerWidth, vertical, animatedScrollValue } = this.props;
 
@@ -54,6 +79,7 @@ class ParallaxSwiper extends Component {
     return (
       <View pointerEvents="box-none" style={styles.container}>
         <Animated.ScrollView
+          ref="animatedScrollView"
           scrollEnabled={this.props.scrollEnabled}
           style={{ width: vertical ? deviceWidth : deviceWidth + dividerWidth, backgroundColor }}
           horizontal={!vertical}
@@ -159,6 +185,7 @@ ParallaxSwiper.defaultProps = {
   vertical: false,
   showsVerticalScrollIndicator: false,
   animatedScrollValue: new Animated.Value(0),
+  scrollToIndex: 0,
 };
 
 export default ParallaxSwiper;
