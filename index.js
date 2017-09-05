@@ -4,6 +4,7 @@ import { View, Animated, StyleSheet, Dimensions } from 'react-native';
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiper extends Component {
+  animatedScrollViewHasScrolled = false;
 
   componentWillReceiveProps(nextProps) {
     this.scrollToIndex(nextProps.scrollToIndex);
