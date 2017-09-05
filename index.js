@@ -5,6 +5,7 @@ const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiper extends Component {
   animatedScrollViewHasScrolled = false;
+  pageIndex = 0;
 
   componentWillReceiveProps(nextProps) {
     this.scrollToIndex(nextProps.scrollToIndex);
@@ -63,6 +64,16 @@ class ParallaxSwiper extends Component {
     return horizontalStyles;
   }
 
+  onScrollEnd(e) {
+    const { vertical, onMomentumScrollEnd } = this.props;
+    const contentOffset = vertical ? e.nativeEvent.contentOffset.y : e.nativeEvent.contentOffset.x;
+    const viewSize = vertical ? deviceHeight : deviceWidth;
+
+    // Divide the content offset by the size of the view to see which page is visible
+    this.pageIndex = Math.floor(contentOffset / viewSize) || 0;
+    onMomentumScrollEnd(this.pageIndex);
+  }
+
   render() {
     const {
       children,
@@ -98,7 +109,7 @@ class ParallaxSwiper extends Component {
           )}
           showsVerticalScrollIndicator={showsVerticalScrollIndicator}
           showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
-          onMomentumScrollEnd={this.props.onMomentumScrollEnd}
+          onMomentumScrollEnd={e => this.onScrollEnd(e)}
         >
           {React.Children.map(children, (child, i) => {
             const dividerBackgroundColor =
@@ -187,6 +198,7 @@ ParallaxSwiper.defaultProps = {
   showsVerticalScrollIndicator: false,
   animatedScrollValue: new Animated.Value(0),
   scrollToIndex: 0,
+  onMomentumScrollEnd: () => console.log('Scroll ended'),
 };
 
 export default ParallaxSwiper;
