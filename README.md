@@ -5,9 +5,9 @@
 
 Configurable parallax swiper based on an iOS pattern.
 
-![Twitter Moments Demo](https://goo.gl/ExixWp)  
-![Vevo Demo](https://goo.gl/CwYT2V)  
-![Lightbox Demo](https://goo.gl/VkdFG4)
+![Twitter Moments Demo](https://user-images.githubusercontent.com/10658888/30244667-636cfc0e-9588-11e7-9805-3a0c5649ab4b.gif)  
+![Vevo Demo](https://user-images.githubusercontent.com/10658888/30244668-66164c3a-9588-11e7-9cfa-c0c5dc29090c.gif)  
+![Lightbox Demo](https://user-images.githubusercontent.com/10658888/30244669-68924b4e-9588-11e7-9426-b081953115fc.gif)
 
 __Features__
 - __Flexible.__ Pass your own Animated.Value and use that value for both ParallaxSwiper and your own UI.
