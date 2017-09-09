@@ -5,8 +5,8 @@
 
 Configurable parallax swiper based on an iOS pattern.
 
-![Twitter Moments Demo](https://goo.gl/ExixWp)
-![Vevo Demo](https://goo.gl/CwYT2V)
+![Twitter Moments Demo](https://goo.gl/ExixWp)  
+![Vevo Demo](https://goo.gl/CwYT2V)  
 ![Lightbox Demo](https://goo.gl/VkdFG4)
 
 __Features__
