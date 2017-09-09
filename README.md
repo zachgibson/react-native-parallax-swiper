@@ -5,6 +5,10 @@
 
 Configurable parallax swiper based on an iOS pattern.
 
+![Twitter Moments Demo](https://goo.gl/ExixWp)
+![Vevo Demo](https://goo.gl/CwYT2V)
+![Lightbox Demo](https://goo.gl/VkdFG4)
+
 __Features__
 - __Flexible.__ Pass your own Animated.Value and use that value for both ParallaxSwiper and your own UI.
 - __Performant.__ Leverages useNativeDriver for 60FPS and no latency.
