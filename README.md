@@ -64,7 +64,7 @@ constructor() {
     }}
     backgroundImage={`https://source.unsplash.com/user/erondu/${deviceHeight}x${deviceWidth}`}
   >
-    <Text>Parallaxing is super rad</Text>
+    <Text>Parallaxing is too rad</Text>
   </View>
 </ParallaxSwiper>
 ```
