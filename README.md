@@ -26,22 +26,45 @@ import ParallaxSwiper from 'react-native-parallax-swiper';
 ```
 
 ```javascript
+constructor() {
+  super();
+  
+  this.myCustomAnimatedValue = new Animated.Value(0);
+}
+```
+
+```javascript
 <ParallaxSwiper
   parallaxStrength={80}
+  animatedScrollValue={this.myCustomAnimatedValue}
   dividerWidth={8}
   dividerColor="black"
-  backgroundColor="#bae"
-  onMomentumScrollEnd={() => console.log('💩')}
+  backgroundColor="#fff"
+  onMomentumScrollEnd={activePageIndex => console.log(activePageIndex)}
 >
+  <Animated.View
+    style={{
+      flex: 1,
+      alignItems: "center",
+      justifyContent: "center",
+      opacity: this.myCustomAnimatedValue.interpolate({
+        inputRange: [0, deviceWidth * 0.25],
+        outputRange: [1, 0]
+      })
+    }}
+    backgroundImage={`https://source.unsplash.com/user/erondu/${deviceHeight + 1}x${deviceWidth + 1}`}
+  >
+    <Text>Parallaxing is rad</Text>
+  </Animated.View>
   <View
     style={{
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-     }}
-     backgroundImage={'https://goo.gl/7Mvjji'}
-    >
-    <Text>Pass Arbitrary JSX to ParallaxSwiper as Children</Text>
+      alignItems: "center",
+      justifyContent: "center"
+    }}
+    backgroundImage={`https://source.unsplash.com/user/erondu/${deviceHeight}x${deviceWidth}`}
+  >
+    <Text>Parallaxing is super rad</Text>
   </View>
 </ParallaxSwiper>
 ```
