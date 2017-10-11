@@ -1,6 +1,6 @@
 {
   "name": "react-native-parallax-swiper",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Full Screen Parallax Swiper Allowing Arbitrary UI Injection",
   "main": "index.js",
   "repository": {
@@ -35,7 +35,10 @@
     "eslint-plugin-react-native": "^2.3.2"
   },
   "peerDependencies": {
-    "react": "~15.3.1",
-    "react-native": "0.37.0"
+    "react": "^15.3.1",
+    "react-native": "^0.37.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.5.7"
   }
 }

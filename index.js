@@ -1,5 +1,6 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { View, Animated, StyleSheet, Dimensions, Image } from 'react-native';
+import PropTypes from 'prop-types';
 
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
