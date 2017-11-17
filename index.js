@@ -75,7 +75,7 @@ class ParallaxSwiper extends Component {
     const viewSize = vertical ? deviceHeight : deviceWidth;
 
     // Divide the content offset by the size of the view to see which page is visible
-    this.pageIndex = Math.floor(contentOffset / viewSize) || 0;
+    this.pageIndex = (contentOffset / viewSize).toFixed() || 0;
     onMomentumScrollEnd(this.pageIndex);
   }
 
