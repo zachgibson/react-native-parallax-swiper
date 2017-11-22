@@ -22,13 +22,13 @@ $ yarn add react-native-parallax-swiper
 
 ## Usage
 ```javascript
-import ParallaxSwiper from 'react-native-parallax-swiper';
+import { ParallaxSwiper, ParallaxSwiperPage } from 'react-native-parallax-swiper';
 ```
 
 ```javascript
 constructor() {
   super();
-  
+
   this.myCustomAnimatedValue = new Animated.Value(0);
 }
 ```
@@ -42,49 +42,41 @@ constructor() {
   backgroundColor="#fff"
   onMomentumScrollEnd={activePageIndex => console.log(activePageIndex)}
 >
-  <Animated.View
-    style={{
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      opacity: this.myCustomAnimatedValue.interpolate({
-        inputRange: [0, deviceWidth * 0.25],
-        outputRange: [1, 0]
-      })
-    }}
-    backgroundImage={`https://source.unsplash.com/user/erondu/${deviceHeight + 1}x${deviceWidth + 1}`}
-  >
-    <Text>Parallaxing is rad</Text>
-  </Animated.View>
-  <View
-    style={{
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center"
-    }}
-    backgroundImage={`https://source.unsplash.com/user/erondu/${deviceHeight}x${deviceWidth}`}
-  >
-    <Text>Parallaxing is too rad</Text>
-  </View>
+  <ParallaxSwiperPage
+    PageBackgroundComponent={<FireVideoComponent />}
+    PageForegroundComponent={<SickUI />}
+  />
+  <ParallaxSwiperPage
+    PageBackgroundComponent={<FireVideoComponent />}
+    PageForegroundComponent={<SickUI />}
+  />
+  <ParallaxSwiperPage
+    PageBackgroundComponent={<FireVideoComponent />}
+    PageForegroundComponent={<SickUI />}
+  />
 </ParallaxSwiper>
 ```
 
-## Props
+## ParallaxSwiper Props
 | Prop | Type | Default | Description |
 |---|---|---|---|
 | __`parallaxStrength`__ | _Number_ | `80` | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
 | __`dividerWidth`__ | _Number_ | `8` | The width of the divider between each page. (horizontal only) |
 | __`dividerColor`__ | _String_ | `black` | Color of divider. |
-| __`backgroundImage`__ | _String_ | `N/A` | The image source. If used this becomes the background image that parallaxes. (remote URL only for now) |
-| __`backgroundImageResizeMode`__ | _String_ | `cover` | Determines how to resize the image. |
-| __`backgroundColor`__ | _String_ | `black` | The main view’s background color. |
+| __`backgroundColor`__ | _String_ | `black` | ParallaxSwiper’s background color. |
 | __`scrollToIndex`__ | _Function_ | 0 | Scrolls to index with a smooth animation. If used onComponentDidMount scroll is immediate with no animation. |
-| __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Called when ScrollView stops scrolling and is passed the current page index. |
-| __`animatedScrollValue`__ | _Animated.Value_ | `0` | Optionally pass a new instance of Animated.Value to this prop to have access to the animated scroll value to animate your own components. |
-| __`children`__ | _ReactComponents_ | `N/A` | JSX to inject into the page. |
-| __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. For now only iOS supports this, but there is work to implement vertical paging on Android. |
+| __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Fired when ScrollView stops scrolling and is passed the current page index. |
+| __`animatedScrollValue`__ | _Number (Animated.Value)_ | `0` | Optionally pass a new instance of Animated.Value to  access the animated value outside of ParallaxSwiper. |
+| __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. For now only iOS supports this. |
 | __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
+| __`children`__ | _React component (ParallaxSwiperPage)_ | `N/A` | Each top-level ParallaxSwiperPage child. |
+
+## ParallaxSwiperPage Props
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| __`PageBackgroundComponent`__ | _React element_ | `N/A` | This component will render in the background of the page and will be animated based on scroll. |
+| __`PageForegroundComponent`__ | _React element_ | `N/A` | This component will render in the foreground of the page. |
 
 ## TODO
 - [ ] Create Expo demos
