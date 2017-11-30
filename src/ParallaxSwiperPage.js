@@ -10,14 +10,14 @@ class ParallaxSwiperPage extends Component {
       parallaxStrength,
       dividerWidth,
       vertical,
-      animatedScrollValue,
+      animatedValue,
     } = this.props;
     const totalPageWidth = deviceWidth + dividerWidth;
 
     const horizontalStyles = {
       transform: [
         {
-          translateX: animatedScrollValue.interpolate({
+          translateX: animatedValue.interpolate({
             inputRange: [
               (i - 1) * totalPageWidth,
               i * (deviceWidth + dividerWidth),
@@ -33,7 +33,7 @@ class ParallaxSwiperPage extends Component {
     const verticalStyles = {
       transform: [
         {
-          translateY: animatedScrollValue.interpolate({
+          translateY: animatedValue.interpolate({
             inputRange: [
               (i - 1) * deviceHeight,
               i * deviceHeight,
@@ -86,7 +86,7 @@ ParallaxSwiperPage.propTypes = {
   index: PropTypes.number,
   BackgroundComponent: PropTypes.element,
   ForegroundComponent: PropTypes.element,
-  animatedScrollValue: PropTypes.instanceOf(Animated.Value),
+  animatedValue: PropTypes.instanceOf(Animated.Value),
 };
 
 ParallaxSwiperPage.defaultProps = {};

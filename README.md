@@ -36,7 +36,7 @@ constructor() {
 ```javascript
 <ParallaxSwiper
   parallaxStrength={80}
-  animatedScrollValue={this.myCustomAnimatedValue}
+  animatedValue={this.myCustomAnimatedValue}
   dividerWidth={8}
   dividerColor="black"
   backgroundColor="#fff"
@@ -66,7 +66,7 @@ constructor() {
 | __`backgroundColor`__ | _String_ | `black` | ParallaxSwiper’s background color. |
 | __`scrollToIndex`__ | _Function_ | 0 | Scrolls to index with a smooth animation. If used onComponentDidMount scroll is immediate with no animation. |
 | __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Fired when ScrollView stops scrolling and is passed the current page index. |
-| __`animatedScrollValue`__ | _Number (Animated.Value)_ | `0` | Optionally pass a new instance of Animated.Value to  access the animated value outside of ParallaxSwiper. |
+| __`animatedValue`__ | _Number (Animated.Value)_ | `0` | Optionally pass a new instance of Animated.Value to  access the animated value outside of ParallaxSwiper. |
 | __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. For now only iOS supports this. |
 | __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |

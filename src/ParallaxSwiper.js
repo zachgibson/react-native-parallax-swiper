@@ -26,14 +26,14 @@ class ParallaxSwiper extends Component {
   }
 
   scrollToIndex(i) {
-    const { vertical, dividerWidth, animatedScrollValue } = this.props;
+    const { vertical, dividerWidth, animatedValue } = this.props;
 
     const index = vertical
       ? i * deviceHeight
       : i * (deviceWidth + dividerWidth);
 
     if (!this.animatedScrollViewHasScrolled) {
-      animatedScrollValue.setValue(index);
+      animatedValue.setValue(index);
     }
 
     this.animatedScrollView._component.scrollTo({
@@ -60,7 +60,7 @@ class ParallaxSwiper extends Component {
       showsVerticalScrollIndicator,
       showsHorizontalScrollIndicator,
       vertical,
-      animatedScrollValue,
+      animatedValue,
       scrollEnabled,
     } = this.props;
 
@@ -82,8 +82,8 @@ class ParallaxSwiper extends Component {
             [
               {
                 nativeEvent: vertical
-                  ? { contentOffset: { y: animatedScrollValue } }
-                  : { contentOffset: { x: animatedScrollValue } },
+                  ? { contentOffset: { y: animatedValue } }
+                  : { contentOffset: { x: animatedValue } },
               },
             ],
             { useNativeDriver: true },
@@ -104,7 +104,7 @@ class ParallaxSwiper extends Component {
                   index={i}
                   dividerWidth={dividerWidth}
                   vertical={vertical}
-                  animatedScrollValue={animatedScrollValue}
+                  animatedValue={animatedValue}
                   parallaxStrength={parallaxStrength}
                   BackgroundComponent={child.props.BackgroundComponent}
                   ForegroundComponent={child.props.ForegroundComponent}
@@ -146,7 +146,7 @@ ParallaxSwiper.propTypes = {
   children: PropTypes.arrayOf(PropTypes.element),
   vertical: PropTypes.bool,
   showsVerticalScrollIndicator: PropTypes.bool,
-  animatedScrollValue: PropTypes.instanceOf(Animated.Value),
+  animatedValue: PropTypes.instanceOf(Animated.Value),
   scrollEnabled: PropTypes.bool,
   scrollToIndex: PropTypes.number,
 };
@@ -159,7 +159,7 @@ ParallaxSwiper.defaultProps = {
   showsHorizontalScrollIndicator: false,
   vertical: false,
   showsVerticalScrollIndicator: false,
-  animatedScrollValue: new Animated.Value(0),
+  animatedValue: new Animated.Value(0),
   onMomentumScrollEnd: () => null,
   scrollToIndex: 0,
   scrollEnabled: true,
