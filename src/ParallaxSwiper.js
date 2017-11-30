@@ -106,8 +106,8 @@ class ParallaxSwiper extends Component {
                   vertical={vertical}
                   animatedScrollValue={animatedScrollValue}
                   parallaxStrength={parallaxStrength}
-                  PageBackgroundComponent={child.props.PageBackgroundComponent}
-                  PageForegroundComponent={child.props.PageForegroundComponent}
+                  BackgroundComponent={child.props.BackgroundComponent}
+                  ForegroundComponent={child.props.ForegroundComponent}
                 />
                 {!vertical && (
                   <View

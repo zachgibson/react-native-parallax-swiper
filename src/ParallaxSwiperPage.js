@@ -53,19 +53,15 @@ class ParallaxSwiperPage extends Component {
   }
 
   render() {
-    const {
-      index,
-      PageBackgroundComponent,
-      PageForegroundComponent,
-    } = this.props;
+    const { index, BackgroundComponent, ForegroundComponent } = this.props;
 
     return (
       <View style={styles.container}>
         <Animated.View style={this.getParallaxStyles(index)}>
-          {PageBackgroundComponent}
+          {BackgroundComponent}
         </Animated.View>
         <View pointerEvents="box-none" style={styles.foregroundContainer}>
-          {PageForegroundComponent}
+          {ForegroundComponent}
         </View>
       </View>
     );
@@ -88,8 +84,8 @@ ParallaxSwiperPage.propTypes = {
   dividerWidth: PropTypes.number,
   vertical: PropTypes.bool,
   index: PropTypes.number,
-  PageBackgroundComponent: PropTypes.element,
-  PageForegroundComponent: PropTypes.element,
+  BackgroundComponent: PropTypes.element,
+  ForegroundComponent: PropTypes.element,
   animatedScrollValue: PropTypes.instanceOf(Animated.Value),
 };
 

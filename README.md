@@ -43,16 +43,16 @@ constructor() {
   onMomentumScrollEnd={activePageIndex => console.log(activePageIndex)}
 >
   <ParallaxSwiperPage
-    PageBackgroundComponent={<FireVideoComponent />}
-    PageForegroundComponent={<SickUI />}
+    BackgroundComponent={<FireVideoComponent />}
+    ForegroundComponent={<SickUI />}
   />
   <ParallaxSwiperPage
-    PageBackgroundComponent={<FireVideoComponent />}
-    PageForegroundComponent={<SickUI />}
+    BackgroundComponent={<FireVideoComponent />}
+    ForegroundComponent={<SickUI />}
   />
   <ParallaxSwiperPage
-    PageBackgroundComponent={<FireVideoComponent />}
-    PageForegroundComponent={<SickUI />}
+    BackgroundComponent={<FireVideoComponent />}
+    ForegroundComponent={<SickUI />}
   />
 </ParallaxSwiper>
 ```
@@ -75,8 +75,8 @@ constructor() {
 ## ParallaxSwiperPage Props
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| __`PageBackgroundComponent`__ | _React element_ | `N/A` | This component will render in the background of the page and will be animated based on scroll. |
-| __`PageForegroundComponent`__ | _React element_ | `N/A` | This component will render in the foreground of the page. |
+| __`BackgroundComponent`__ | _React element_ | `N/A` | This component will render in the background of the page and will be animated based on scroll. |
+| __`ForegroundComponent`__ | _React element_ | `N/A` | This component will render in the foreground of the page. |
 
 ## TODO
 - [ ] Create Expo demos
