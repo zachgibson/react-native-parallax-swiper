@@ -87,6 +87,7 @@ constructor() {
 - [x] Expose Animated.Value for animation outside of ParallaxSwiper
 - [ ] Add drag effects e.g. zoom, blur, darken
 - [ ] Expose rest of [ScrollView](http://facebook.github.io/react-native/releases/0.47/docs/scrollview.html#scrollview) props
+- [ ] Use FlatList instead of ScrollView
 
 ## Why another parallax component? 😒
 This component is inspired by an iOS pattern that no react-native-parallax-whatever previously delivered. It emulates this pattern by using the [ScrollView](http://facebook.github.io/react-native/releases/0.48/docs/scrollview.html) component which has features like velocity, paging, and platform specific easing curves; It also has optional dividers to split up each page. You can see this pattern in apps like [iOS Camera Roll](https://goo.gl/GY3bFQ), [Twitter Moments](https://goo.gl/CvzCQA), [Kylie Jenner’s app](https://goo.gl/yDB69S), [Vevo’s app](https://goo.gl/FMSSeF), and more.
