@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/zachgibson/react-native-parallax-swiper.git"
   },
+  "scripts": {
+    "run:ios": "cd examples/ParallaxSwiperExample && yarn run:ios"
+  },
   "keywords": [
     "react-native-component",
     "react-native",
