@@ -84,13 +84,9 @@ const styles = StyleSheet.create({
 });
 
 ParallaxSwiperPage.propTypes = {
-  speed: PropTypes.number,
-  dividerWidth: PropTypes.number,
-  vertical: PropTypes.bool,
   index: PropTypes.number,
   BackgroundComponent: PropTypes.element,
   ForegroundComponent: PropTypes.element,
-  animatedValue: PropTypes.instanceOf(Animated.Value),
 };
 
 ParallaxSwiperPage.defaultProps = {};

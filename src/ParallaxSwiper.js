@@ -140,7 +140,13 @@ ParallaxSwiper.propTypes = {
   backgroundColor: PropTypes.string,
   dividerColor: PropTypes.string,
   dividerWidth: PropTypes.number,
-  speed: PropTypes.number,
+  speed(props, propName, componentName) {
+    if (props[propName] < 0 || props[propName] > 1) {
+      return new Error(
+        `Invalid 'speed' prop for ${componentName}. Number should be between 0 and 1.`,
+      );
+    }
+  },
   showsHorizontalScrollIndicator: PropTypes.bool,
   onMomentumScrollEnd: PropTypes.func,
   children: PropTypes.arrayOf(PropTypes.element),
