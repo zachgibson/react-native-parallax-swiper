@@ -149,7 +149,14 @@ ParallaxSwiper.propTypes = {
   },
   showsHorizontalScrollIndicator: PropTypes.bool,
   onMomentumScrollEnd: PropTypes.func,
-  children: PropTypes.arrayOf(PropTypes.element),
+  children: PropTypes.arrayOf((propValue, key, componentName) => {
+    const childComponentName = propValue[key].type.displayName;
+    if (!/ParallaxSwiperPage/.test(childComponentName)) {
+      return new Error(
+        `Invalid component '${childComponentName}' supplied to ${componentName}. Use 'ParallaxSwiperPage' instead.`,
+      );
+    }
+  }),
   vertical: PropTypes.bool,
   showsVerticalScrollIndicator: PropTypes.bool,
   animatedValue: PropTypes.instanceOf(Animated.Value),
