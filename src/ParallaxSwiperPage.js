@@ -6,13 +6,12 @@ const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiperPage extends Component {
   getParallaxStyles(i) {
-    const {
-      parallaxStrength,
-      dividerWidth,
-      vertical,
-      animatedValue,
-    } = this.props;
+    const { speed, dividerWidth, vertical, animatedValue } = this.props;
     const totalPageWidth = deviceWidth + dividerWidth;
+    const horizontalSpeed = Math.abs(
+      (deviceWidth + dividerWidth) * speed - deviceWidth,
+    );
+    const verticalSpeed = Math.abs(deviceHeight * speed - deviceHeight);
 
     const horizontalStyles = {
       transform: [
@@ -23,7 +22,7 @@ class ParallaxSwiperPage extends Component {
               i * (deviceWidth + dividerWidth),
               (i + 1) * totalPageWidth,
             ],
-            outputRange: [-parallaxStrength, 0, parallaxStrength],
+            outputRange: [-horizontalSpeed, 0, horizontalSpeed],
             extrapolate: 'clamp',
           }),
         },
@@ -39,7 +38,7 @@ class ParallaxSwiperPage extends Component {
               i * deviceHeight,
               (i + 1) * deviceHeight,
             ],
-            outputRange: [-parallaxStrength, 0, parallaxStrength],
+            outputRange: [-verticalSpeed, 0, verticalSpeed],
             extrapolate: 'clamp',
           }),
         },
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
 });
 
 ParallaxSwiperPage.propTypes = {
-  parallaxStrength: PropTypes.number,
+  speed: PropTypes.number,
   dividerWidth: PropTypes.number,
   vertical: PropTypes.bool,
   index: PropTypes.number,

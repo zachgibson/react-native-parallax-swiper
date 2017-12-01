@@ -35,7 +35,7 @@ constructor() {
 
 ```javascript
 <ParallaxSwiper
-  parallaxStrength={80}
+  speed={0.25}
   animatedValue={this.myCustomAnimatedValue}
   dividerWidth={8}
   dividerColor="black"
@@ -60,7 +60,7 @@ constructor() {
 ## ParallaxSwiper Props
 | Prop | Type | Default | Description |
 |---|---|---|---|
-| __`parallaxStrength`__ | _Number_ | `80` | This number determines how slow parallax’ing element moves. Lower number yields a subtler parallax effect, higher number increases parallax effect. |
+| __`speed`__ | _Number_ | `0.25` | This number determines how fast `BackgroundComponent` moves. Set to 0 for no movement at all, set to 1 and background will move as fast as the scroll. |
 | __`dividerWidth`__ | _Number_ | `8` | The width of the divider between each page. (horizontal only) |
 | __`dividerColor`__ | _String_ | `black` | Color of divider. |
 | __`backgroundColor`__ | _String_ | `black` | ParallaxSwiper’s background color. |

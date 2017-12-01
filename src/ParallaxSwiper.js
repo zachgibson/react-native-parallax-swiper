@@ -53,7 +53,7 @@ class ParallaxSwiper extends Component {
   render() {
     const {
       children,
-      parallaxStrength,
+      speed,
       backgroundColor,
       dividerColor,
       dividerWidth,
@@ -105,7 +105,7 @@ class ParallaxSwiper extends Component {
                   dividerWidth={dividerWidth}
                   vertical={vertical}
                   animatedValue={animatedValue}
-                  parallaxStrength={parallaxStrength}
+                  speed={speed}
                   BackgroundComponent={child.props.BackgroundComponent}
                   ForegroundComponent={child.props.ForegroundComponent}
                 />
@@ -140,7 +140,7 @@ ParallaxSwiper.propTypes = {
   backgroundColor: PropTypes.string,
   dividerColor: PropTypes.string,
   dividerWidth: PropTypes.number,
-  parallaxStrength: PropTypes.number,
+  speed: PropTypes.number,
   showsHorizontalScrollIndicator: PropTypes.bool,
   onMomentumScrollEnd: PropTypes.func,
   children: PropTypes.arrayOf(PropTypes.element),
@@ -155,7 +155,7 @@ ParallaxSwiper.defaultProps = {
   backgroundColor: 'black',
   dividerColor: 'black',
   dividerWidth: 8,
-  parallaxStrength: 80,
+  speed: 0.25,
   showsHorizontalScrollIndicator: false,
   vertical: false,
   showsVerticalScrollIndicator: false,
