@@ -1,57 +1,90 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import { SafeAreaView, StackNavigator } from 'react-navigation';
 
-export default class App extends Component<{}> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
-}
+import TwitterMoments from './screens/TwitterMoments';
+import Vevo from './screens/Vevo';
+
+const ExampleRoutes = {
+  TwitterMoments: {
+    name: 'Twitter Moments Example',
+    description: '',
+    screen: TwitterMoments,
+  },
+  Vevo: {
+    name: 'Vevo Example',
+    description: '',
+    screen: Vevo,
+  },
+};
+
+const MainScreen = ({ navigation }) => (
+  <ScrollView style={styles.container}>
+    {Object.keys(ExampleRoutes).map(routeName => (
+      <TouchableOpacity
+        key={routeName}
+        onPress={() => {
+          const { path, params, screen } = ExampleRoutes[routeName];
+          const { router } = screen;
+          const action = path && router.getActionForPathAndParams(path, params);
+          navigation.navigate(routeName, {}, action);
+        }}
+      >
+        <SafeAreaView
+          style={styles.itemContainer}
+          forceInset={{ vertical: 'never' }}
+        >
+          <View style={styles.item}>
+            <Text style={styles.title}>{ExampleRoutes[routeName].name}</Text>
+            <Text style={styles.description}>
+              {ExampleRoutes[routeName].description}
+            </Text>
+          </View>
+        </SafeAreaView>
+      </TouchableOpacity>
+    ))}
+  </ScrollView>
+);
+
+const AppNavigator = StackNavigator(
+  {
+    ...ExampleRoutes,
+    Index: {
+      screen: MainScreen,
+    },
+  },
+  {
+    initialRouteName: 'Index',
+    headerMode: 'none',
+  },
+);
+
+export default () => <AppNavigator />;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+  item: {
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  itemContainer: {
+    backgroundColor: '#fff',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#ddd',
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#444',
+  },
+  description: {
+    fontSize: 13,
+    color: '#999',
   },
 });
