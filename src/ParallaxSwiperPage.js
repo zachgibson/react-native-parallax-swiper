@@ -8,7 +8,10 @@ class ParallaxSwiperPage extends Component {
   getParallaxStyles(i) {
     const { speed, dividerWidth, vertical, animatedValue } = this.props;
     const totalPageWidth = deviceWidth + dividerWidth;
-    const horizontalSpeed = Math.abs(deviceWidth * speed - deviceWidth);
+    const horizontalSpeed =
+      dividerWidth === 0
+        ? Math.abs(deviceWidth * speed - deviceWidth)
+        : Math.abs(deviceWidth * speed - dividerWidth - deviceWidth);
     const verticalSpeed = Math.abs(deviceHeight * speed - deviceHeight);
 
     const horizontalStyles = {
@@ -42,6 +45,10 @@ class ParallaxSwiperPage extends Component {
         },
       ],
     };
+
+    if (speed === 1) {
+      return {};
+    }
 
     if (vertical) {
       return verticalStyles;
