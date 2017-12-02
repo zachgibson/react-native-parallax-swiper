@@ -11,6 +11,8 @@
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.50.4",
+    "react-native-linear-gradient": "^2.3.0",
+    "react-native-parallax-swiper": "git://github.com/zachgibson/react-native-parallax-swiper.git#feature/allow-background-and-foreground-component-injection",
     "react-navigation": "^1.0.0-beta.21"
   },
   "devDependencies": {
