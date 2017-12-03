@@ -16,7 +16,7 @@ __Features__
 
 ## Installation
 ```shell
-$ yarn add react-native-parallax-swiper
+$ npm install react-native-parallax-swiper --save
 ```
 
 
