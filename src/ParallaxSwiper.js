@@ -9,6 +9,11 @@ import ParallaxSwiperPage, {
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 
 class ParallaxSwiper extends Component {
+  state = {
+    width: deviceWidth,
+    height: deviceHeight,
+  };
+
   componentWillReceiveProps(nextProps) {
     this.scrollToIndex(nextProps.scrollToIndex);
   }
@@ -18,19 +23,23 @@ class ParallaxSwiper extends Component {
     const contentOffset = vertical
       ? e.nativeEvent.contentOffset.y
       : e.nativeEvent.contentOffset.x;
-    const viewSize = vertical ? deviceHeight : deviceWidth;
+    const viewSize = vertical ? this.state.height : this.state.width;
 
     // Divide content offset by size of the view to see which page is visible
     this.pageIndex = Math.abs((contentOffset / viewSize).toFixed()) || 0;
     onMomentumScrollEnd(this.pageIndex);
   }
 
+  setScrollViewSize = (width, height) => {
+    this.setState({ width, height });
+  };
+
   scrollToIndex(i) {
     const { vertical, dividerWidth, animatedValue } = this.props;
 
     const index = vertical
-      ? i * deviceHeight
-      : i * (deviceWidth + dividerWidth);
+      ? i * this.state.height
+      : i * (this.state.width + dividerWidth);
 
     if (!this.animatedScrollViewHasScrolled) {
       animatedValue.setValue(index);
@@ -65,14 +74,17 @@ class ParallaxSwiper extends Component {
     } = this.props;
 
     return (
-      <View pointerEvents="box-none" style={styles.container}>
+      <View pointerEvents="box-none">
         <Animated.ScrollView
           ref={(scrollView) => {
             this.animatedScrollView = scrollView;
           }}
           scrollEnabled={scrollEnabled}
           style={{
-            width: vertical ? deviceWidth : deviceWidth + dividerWidth,
+            width: vertical
+              ? this.state.width
+              : this.state.width + dividerWidth,
+            height: this.state.height,
             backgroundColor,
           }}
           horizontal={!vertical}
@@ -102,6 +114,9 @@ class ParallaxSwiper extends Component {
               <View key={i} style={[styles.pageOuterContainer, { zIndex: -i }]}>
                 <ParallaxSwiperPage
                   index={i}
+                  setScrollViewSize={this.setScrollViewSize}
+                  pageWidth={this.state.width}
+                  pageHeight={this.state.height}
                   dividerWidth={dividerWidth}
                   vertical={vertical}
                   animatedValue={animatedValue}
@@ -113,7 +128,7 @@ class ParallaxSwiper extends Component {
                   <View
                     style={{
                       width: dividerWidth,
-                      height: deviceHeight,
+                      height: this.state.height,
                       backgroundColor: dividerBackgroundColor,
                     }}
                   />
@@ -128,9 +143,6 @@ class ParallaxSwiper extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-  },
   pageOuterContainer: {
     flexDirection: 'row',
   },
