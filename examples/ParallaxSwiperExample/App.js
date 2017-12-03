@@ -5,32 +5,27 @@ import {
   View,
   TouchableOpacity,
   ScrollView,
-  Platform,
   StatusBar,
 } from 'react-native';
 
 import { SafeAreaView, StackNavigator } from 'react-navigation';
+import { Typography } from 'react-native-typography';
 
 import Twitter from './screens/Twitter';
 import Vevo from './screens/Vevo';
 
 const ExampleRoutes = {
   Twitter: {
-    name: 'Twitter Moments Example',
+    name: 'Twitter Moments',
     description: 'Re-creation of Twitter’s Moments feature.',
     screen: Twitter,
   },
   Vevo: {
-    name: 'Vevo Example',
+    name: 'Vevo',
     description: 'Re-creation of the old Vevo app.',
     screen: Vevo,
   },
 };
-
-const instructions =
-  Platform.OS === 'ios'
-    ? '(Swipe back to get back to demos)'
-    : '(Press back to get back to demos)';
 
 class MainScreen extends Component {
   componentDidMount() {
@@ -41,22 +36,17 @@ class MainScreen extends Component {
     const { navigation } = this.props;
 
     return (
-      <ScrollView style={{ backgroundColor: 'black' }}>
-        <View
-          style={{
-            marginHorizontal: 16,
-            paddingTop: 20 + 16,
-            paddingBottom: 16,
-          }}
-        >
-          <Text style={{ color: 'white', fontSize: 30 }}>
+      <ScrollView stickyHeaderIndices={[0]} style={styles.scrollView}>
+        <View style={styles.navBar}>
+          <Typography
+            iOSTextStyle="title1"
+            androidTextStyle="headline"
+            style={{ color: '#BFBFBF' }}
+          >
             ParallaxSwiper Demos
-          </Text>
-          <Text style={{ color: 'white' }}>
-            {instructions}
-          </Text>
+          </Typography>
         </View>
-        {Object.keys(ExampleRoutes).map(routeName =>
+        {Object.keys(ExampleRoutes).map((routeName, i) =>
           (<TouchableOpacity
             key={routeName}
             onPress={() => {
@@ -68,16 +58,27 @@ class MainScreen extends Component {
             }}
           >
             <SafeAreaView
-              style={styles.itemContainer}
-              // forceInset={{ vertical: 'never' }}
+              style={[
+                styles.itemContainer,
+                { borderTopWidth: i === 0 ? StyleSheet.hairlineWidth : 0 },
+              ]}
+              forceInset={{ vertical: 'never' }}
             >
               <View style={styles.item}>
-                <Text style={styles.title}>
+                <Typography
+                  iOSTextStyle="callout"
+                  androidTextStyle="body2"
+                  style={{ color: '#BFBFBF' }}
+                >
                   {ExampleRoutes[routeName].name}
-                </Text>
-                <Text style={styles.description}>
+                </Typography>
+                <Typography
+                  iOSTextStyle="caption1"
+                  androidTextStyle="caption"
+                  style={{ color: '#777' }}
+                >
                   {ExampleRoutes[routeName].description}
-                </Text>
+                </Typography>
               </View>
             </SafeAreaView>
           </TouchableOpacity>),
@@ -103,22 +104,22 @@ const AppNavigator = StackNavigator(
 export default () => <AppNavigator />;
 
 const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: 'black',
+  },
+  navBar: {
+    paddingTop: 32,
+    paddingBottom: 16,
+    paddingHorizontal: 16,
+    backgroundColor: 'black',
+  },
   item: {
     paddingHorizontal: 16,
     paddingVertical: 12,
   },
   itemContainer: {
-    backgroundColor: '#111',
     borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#333',
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#444',
-  },
-  description: {
-    fontSize: 13,
-    color: '#999',
+    borderColor: '#222',
+    backgroundColor: '#111',
   },
 });

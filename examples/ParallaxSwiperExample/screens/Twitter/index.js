@@ -17,24 +17,32 @@ import LinearGradient from 'react-native-linear-gradient';
 
 import data from './data';
 
+const smallRetweetIcon = require('./assets/retweet.png');
+const smallHeartIcon = require('./assets/heart-small.png');
+const smallEllipsesIcon = require('./assets/ellipses.png');
+const xIcon = require('./assets/x.png');
+const heartIcon = require('./assets/heart-big.png');
+const shareIcon = require('./assets/share.png');
+
 const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
 const myAnimatedValue = new Animated.Value(0);
 
 export default ({ navigation }) =>
-  (<View style={styles.container}>
+  (<View>
     <ParallaxSwiper
       speed={0.75}
       dividerWidth={6}
+      dividerColor="black"
       animatedValue={myAnimatedValue}
     >
-      {data.map(page =>
+      {data.map(tweet =>
         (<ParallaxSwiperPage
-          key={page.id}
+          key={tweet.id}
           BackgroundComponent={
             <Image
               style={styles.image}
               source={{
-                uri: page.backgroundImage,
+                uri: tweet.media,
               }}
             />
           }
@@ -46,38 +54,30 @@ export default ({ navigation }) =>
               >
                 <View style={styles.twitterNameAndHandleContainer}>
                   <Text style={styles.twitterName}>
-                    {page.twitterName}
+                    {tweet.userName}
                   </Text>
                   <Text style={styles.twitterHandle}>
-                    {page.twitterHandle}
+                    {tweet.userHandle}
                   </Text>
                 </View>
                 <View style={styles.tweetTextContainer}>
                   <Text style={styles.tweetText}>
-                    {page.tweetText}
+                    {tweet.text}
                   </Text>
                 </View>
                 <View style={styles.smallButtonsContainer}>
                   <View style={styles.bottomIconsContainer}>
-                    <View
-                      style={[
-                        styles.buttonWithTextContainer,
-                        { marginRight: 24 },
-                      ]}
-                    >
+                    <View style={[styles.buttonWithTextContainer]}>
                       <View
                         style={[
                           styles.smallButtonContainer,
                           styles.smallButtonWithTextIconContainer,
                         ]}
                       >
-                        <Image
-                          style={styles.icon}
-                          source={require('./assets/retweet.png')}
-                        />
+                        <Image style={styles.icon} source={smallRetweetIcon} />
                       </View>
                       <Text style={styles.buttonText}>
-                        {page.retweetCount}
+                        {tweet.retweetCount}
                       </Text>
                     </View>
                     <View style={styles.buttonWithTextContainer}>
@@ -87,22 +87,14 @@ export default ({ navigation }) =>
                           styles.smallButtonWithTextIconContainer,
                         ]}
                       >
-                        <Image
-                          style={styles.icon}
-                          source={require('./assets/heart-small.png')}
-                        />
+                        <Image style={styles.icon} source={smallHeartIcon} />
                       </View>
                       <Text style={styles.buttonText}>
-                        {page.likeCount}
+                        {tweet.likeCount}
                       </Text>
                     </View>
                   </View>
-                  <View style={{ marginRight: 8 }}>
-                    <Image
-                      style={styles.icon}
-                      source={require('./assets/ellipses.png')}
-                    />
-                  </View>
+                  <Image style={styles.icon} source={smallEllipsesIcon} />
                 </View>
               </LinearGradient>
             </View>
@@ -116,13 +108,13 @@ export default ({ navigation }) =>
       }}
       style={[styles.largeButtonContainer, { left: 12 }]}
     >
-      <Image style={styles.icon} source={require('./assets/x.png')} />
+      <Image style={styles.icon} source={xIcon} />
     </TouchableOpacity>
     <View style={[styles.largeButtonContainer, { right: 64 }]}>
-      <Image style={styles.icon} source={require('./assets/heart-big.png')} />
+      <Image style={styles.icon} source={heartIcon} />
     </View>
     <View style={[styles.largeButtonContainer, { right: 12 }]}>
-      <Image style={styles.icon} source={require('./assets/share.png')} />
+      <Image style={styles.icon} source={shareIcon} />
     </View>
     <View style={styles.progressBarContainer}>
       <Animated.View
@@ -132,7 +124,7 @@ export default ({ navigation }) =>
             transform: [
               {
                 translateX: myAnimatedValue.interpolate({
-                  inputRange: [0, deviceWidth * (data.length - 1)],
+                  inputRange: [0, (deviceWidth + 6) * (data.length - 1)],
                   outputRange: [-deviceWidth, 0],
                   extrapolate: 'clamp',
                 }),
@@ -145,9 +137,6 @@ export default ({ navigation }) =>
   </View>);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   innerContainer: {
     flex: 1,
     justifyContent: 'flex-end',
@@ -185,6 +174,7 @@ const styles = StyleSheet.create({
   buttonWithTextContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginRight: 24,
   },
   bottomIconsContainer: {
     flex: 1,
@@ -195,11 +185,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 12,
+    fontWeight: '600',
     color: 'rgba(255,255,255,0.5)',
   },
   smallButtonsContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: 8,
   },
   smallButtonContainer: {
@@ -211,7 +203,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
   smallButtonWithTextIconContainer: {
-    marginRight: 8,
+    marginRight: 12,
   },
   largeButtonContainer: {
     alignItems: 'center',
