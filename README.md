@@ -14,11 +14,19 @@ __Features__
 ![Vevo Demo](https://user-images.githubusercontent.com/10658888/30244668-66164c3a-9588-11e7-9cfa-c0c5dc29090c.gif)  
 ![Lightbox Demo](https://user-images.githubusercontent.com/10658888/30244669-68924b4e-9588-11e7-9426-b081953115fc.gif)
 
+## Examples
+Check out the GIF examples above via [Expo](https://expo.io/@zachgibson/ParallaxSwiperExample). Or clone this repo and:
+```shell
+$ cd examples/ParallaxSwiperExample
+$ npm install
+$ react-native link
+$ react-native run-ios
+```
+
 ## Installation
 ```shell
 $ npm install react-native-parallax-swiper --save
 ```
-
 
 ## Usage
 ```javascript
@@ -79,8 +87,8 @@ constructor() {
 | __`ForegroundComponent`__ | _React element_ | `N/A` | This component will render in the foreground of the page. |
 
 ## TODO
-- [ ] Create Expo demos
-- [ ] Create examples
+- [x] Create Expo demos
+- [x] Create examples
 - [x] Expose current index
 - [x] Support scrollToIndex
 - [x] Fix Android
