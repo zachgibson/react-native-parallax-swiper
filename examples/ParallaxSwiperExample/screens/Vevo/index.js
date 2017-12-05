@@ -96,7 +96,7 @@ export default class extends Component {
                     <Video
                       source={{ uri: song.media }}
                       rate={1.0}
-                      volume={1.0}
+                      volume={0.0}
                       muted={false}
                       paused={false}
                       resizeMode="cover"
