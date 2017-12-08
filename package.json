@@ -1,6 +1,6 @@
 {
   "name": "react-native-parallax-swiper",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Full Screen Parallax Swiper Allowing Arbitrary UI Injection",
   "main": "src/index.js",
   "repository": {
