@@ -71,6 +71,10 @@ class ParallaxSwiper extends Component {
       vertical,
       animatedValue,
       scrollEnabled,
+      showProgressBar,
+      progressBarThickness,
+      progressBarBackgroundColor,
+      progressBarValueBackgroundColor,
     } = this.props;
 
     return (
@@ -137,6 +141,52 @@ class ParallaxSwiper extends Component {
             );
           })}
         </Animated.ScrollView>
+        {showProgressBar && (
+          <View
+            style={{
+              width: vertical ? progressBarThickness : this.state.width,
+              height: vertical ? this.state.height : progressBarThickness,
+              top: vertical ? -this.state.height : -progressBarThickness,
+              backgroundColor: progressBarBackgroundColor,
+            }}
+          >
+            <Animated.View
+              style={[
+                styles.progressBar,
+                {
+                  backgroundColor: progressBarValueBackgroundColor,
+                  transform: [
+                    {
+                      translateX: vertical
+                        ? 0
+                        : animatedValue.interpolate({
+                          inputRange: [
+                            0,
+                            (this.state.width + dividerWidth) *
+                                (children.length - 1),
+                          ],
+                          outputRange: [-this.state.width, 0],
+                          extrapolate: 'clamp',
+                        }),
+                    },
+                    {
+                      translateY: vertical
+                        ? animatedValue.interpolate({
+                          inputRange: [
+                            0,
+                            this.state.height * (children.length - 1),
+                          ],
+                          outputRange: [-this.state.height, 0],
+                          extrapolate: 'clamp',
+                        })
+                        : 0,
+                    },
+                  ],
+                },
+              ]}
+            />
+          </View>
+        )}
       </View>
     );
   }
@@ -145,6 +195,9 @@ class ParallaxSwiper extends Component {
 const styles = StyleSheet.create({
   pageOuterContainer: {
     flexDirection: 'row',
+  },
+  progressBar: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
 
@@ -174,6 +227,10 @@ ParallaxSwiper.propTypes = {
   animatedValue: PropTypes.instanceOf(Animated.Value),
   scrollEnabled: PropTypes.bool,
   scrollToIndex: PropTypes.number,
+  showProgressBar: PropTypes.bool,
+  progressBarThickness: PropTypes.number,
+  progressBarBackgroundColor: PropTypes.string,
+  progressBarValueBackgroundColor: PropTypes.string,
 };
 
 ParallaxSwiper.defaultProps = {
@@ -188,6 +245,10 @@ ParallaxSwiper.defaultProps = {
   onMomentumScrollEnd: () => null,
   scrollToIndex: 0,
   scrollEnabled: true,
+  showProgressBar: false,
+  progressBarThickness: 4,
+  progressBarBackgroundColor: 'rgba(255,255,255,0.25)',
+  progressBarValueBackgroundColor: 'white',
 };
 
 export default ParallaxSwiper;

@@ -9,6 +9,7 @@ __Features__
 - __Flexible.__ Pass your own Animated.Value and use that value for both ParallaxSwiper and your own UI.
 - __Performant.__ Leverages useNativeDriver for 60FPS and no latency.
 - __Cross-platform.__ Implement your parallax on both iOS and Android.
+- __Progress Bar.__ Horizontal or vertical progress bar.
 
 ![Twitter Moments Demo](https://user-images.githubusercontent.com/10658888/30244667-636cfc0e-9588-11e7-9805-3a0c5649ab4b.gif)  
 ![Vevo Demo](https://user-images.githubusercontent.com/10658888/30244668-66164c3a-9588-11e7-9cfa-c0c5dc29090c.gif)  
@@ -49,6 +50,7 @@ constructor() {
   dividerColor="black"
   backgroundColor="#fff"
   onMomentumScrollEnd={activePageIndex => console.log(activePageIndex)}
+  showProgressBar={true}
 >
   <ParallaxSwiperPage
     BackgroundComponent={<FireVideoComponent />}
@@ -79,6 +81,10 @@ constructor() {
 | __`showsHorizontalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a horizontal scroll indicator. The default value is false. |
 | __`showsVerticalScrollIndicator`__ | _Boolean_ | `false` | When true, shows a vertical scroll indicator. The default value is false. |
 | __`children`__ | _React component (ParallaxSwiperPage)_ | `N/A` | Each top-level ParallaxSwiperPage child. |
+| __`showProgressBar`__ | _Boolean_ | false | When true, a progress bar will render on bottom for horizontal and left on vertical. |
+| __`progressBarThickness`__ | _Number_ | 4 | Thickness translates to height for horizontal and width for vertical progress bar. |
+| __`progressBarBackgroundColor`__ | _String_ | `rgba(255,255,255,0.25)` | Background color of progress bar background. |
+| __`progressBarValueBackgroundColor`__ | _String_ | `white` | Background color of progress bar value background. |
 
 ## ParallaxSwiperPage Props
 | Prop | Type | Default | Description |
