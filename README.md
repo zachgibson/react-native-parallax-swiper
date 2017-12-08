@@ -50,6 +50,7 @@ constructor() {
   dividerColor="black"
   backgroundColor="#fff"
   onMomentumScrollEnd={activePageIndex => console.log(activePageIndex)}
+  showProgressBar={true}
 >
   <ParallaxSwiperPage
     BackgroundComponent={<FireVideoComponent />}
@@ -82,8 +83,8 @@ constructor() {
 | __`children`__ | _React component (ParallaxSwiperPage)_ | `N/A` | Each top-level ParallaxSwiperPage child. |
 | __`showProgressBar`__ | _Boolean_ | false | When true, a progress bar will render on bottom for horizontal and left on vertical. |
 | __`progressBarThickness`__ | _Number_ | 4 | Thickness translates to height for horizontal and width for vertical progress bar. |
-| __`progressBarBackgroundColor`__ | _String_ | 'rgba(255,255,255,0.25)' | Background color of progress bar background. |
-| __`progressBarValueBackgroundColor`__ | _String_ | 'white' | Background color of progress bar value background. |
+| __`progressBarBackgroundColor`__ | _String_ | `rgba(255,255,255,0.25)` | Background color of progress bar background. |
+| __`progressBarValueBackgroundColor`__ | _String_ | `white` | Background color of progress bar value background. |
 
 ## ParallaxSwiperPage Props
 | Prop | Type | Default | Description |
