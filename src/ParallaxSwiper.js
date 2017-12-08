@@ -72,7 +72,9 @@ class ParallaxSwiper extends Component {
       animatedValue,
       scrollEnabled,
       showProgressBar,
-      progressBarStyle,
+      progressBarThickness,
+      progressBarBackgroundColor,
+      progressBarValueBackgroundColor,
     } = this.props;
 
     return (
@@ -142,17 +144,17 @@ class ParallaxSwiper extends Component {
         {showProgressBar && (
           <View
             style={{
-              width: vertical ? progressBarStyle.size : this.state.width,
-              height: vertical ? this.state.height : progressBarStyle.size,
-              top: vertical ? -this.state.height : -progressBarStyle.size,
-              backgroundColor: progressBarStyle.backgroundColor,
+              width: vertical ? progressBarThickness : this.state.width,
+              height: vertical ? this.state.height : progressBarThickness,
+              top: vertical ? -this.state.height : -progressBarThickness,
+              backgroundColor: progressBarBackgroundColor,
             }}
           >
             <Animated.View
               style={[
                 styles.progressBar,
                 {
-                  backgroundColor: progressBarStyle.valueBackgroundColor,
+                  backgroundColor: progressBarValueBackgroundColor,
                   transform: [
                     {
                       translateX: vertical
@@ -226,11 +228,9 @@ ParallaxSwiper.propTypes = {
   scrollEnabled: PropTypes.bool,
   scrollToIndex: PropTypes.number,
   showProgressBar: PropTypes.bool,
-  progressBarStyle: PropTypes.shape({
-    size: PropTypes.number,
-    backgroundColor: PropTypes.string,
-    valueBackgroundColor: PropTypes.string,
-  }),
+  progressBarThickness: PropTypes.number,
+  progressBarBackgroundColor: PropTypes.string,
+  progressBarValueBackgroundColor: PropTypes.string,
 };
 
 ParallaxSwiper.defaultProps = {
@@ -246,11 +246,9 @@ ParallaxSwiper.defaultProps = {
   scrollToIndex: 0,
   scrollEnabled: true,
   showProgressBar: false,
-  progressBarStyle: {
-    size: 4,
-    backgroundColor: 'rgba(255,255,255,0.25)',
-    valueBackgroundColor: 'white',
-  },
+  progressBarThickness: 4,
+  progressBarBackgroundColor: 'rgba(255,255,255,0.25)',
+  progressBarValueBackgroundColor: 'white',
 };
 
 export default ParallaxSwiper;
