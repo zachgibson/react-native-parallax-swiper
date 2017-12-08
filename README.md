@@ -74,7 +74,7 @@ constructor() {
 | __`dividerWidth`__ | _Number_ | `8` | The width of the divider between each page. (horizontal only) |
 | __`dividerColor`__ | _String_ | `black` | Color of divider. |
 | __`backgroundColor`__ | _String_ | `black` | ParallaxSwiper’s background color. |
-| __`scrollToIndex`__ | _Function_ | 0 | Scrolls to index with a smooth animation. If used onComponentDidMount scroll is immediate with no animation. |
+| __`scrollToIndex`__ | _Number_ | 0 | Scrolls to index with a smooth animation. If used onComponentDidMount scroll is immediate with no animation. |
 | __`onMomentumScrollEnd`__ | _Function_ | `N/A` | Fired when ScrollView stops scrolling and is passed the current page index. |
 | __`animatedValue`__ | _Number (Animated.Value)_ | `0` | Optionally pass a new instance of Animated.Value to  access the animated value outside of ParallaxSwiper. |
 | __`vertical`__ | _Boolean_ | `false` | When true, ParallaxSwiper’s children are arranged vertically in a column instead of horizontally in a row. For now only iOS supports this. |
