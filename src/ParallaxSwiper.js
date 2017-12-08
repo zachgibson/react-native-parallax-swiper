@@ -142,9 +142,9 @@ class ParallaxSwiper extends Component {
         {showProgressBar && (
           <View
             style={{
-              width: vertical ? progressBarStyle.height : this.state.width,
-              height: vertical ? this.state.height : progressBarStyle.height,
-              top: vertical ? -this.state.height : -progressBarStyle.height,
+              width: vertical ? progressBarStyle.size : this.state.width,
+              height: vertical ? this.state.height : progressBarStyle.size,
+              top: vertical ? -this.state.height : -progressBarStyle.size,
               backgroundColor: progressBarStyle.backgroundColor,
             }}
           >
@@ -227,7 +227,7 @@ ParallaxSwiper.propTypes = {
   scrollToIndex: PropTypes.number,
   showProgressBar: PropTypes.bool,
   progressBarStyle: PropTypes.shape({
-    height: PropTypes.number,
+    size: PropTypes.number,
     backgroundColor: PropTypes.string,
     valueBackgroundColor: PropTypes.string,
   }),
@@ -247,7 +247,7 @@ ParallaxSwiper.defaultProps = {
   scrollEnabled: true,
   showProgressBar: false,
   progressBarStyle: {
-    height: 4,
+    size: 4,
     backgroundColor: 'rgba(255,255,255,0.25)',
     valueBackgroundColor: 'white',
   },
