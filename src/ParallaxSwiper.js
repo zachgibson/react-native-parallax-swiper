@@ -14,6 +14,13 @@ class ParallaxSwiper extends Component {
     height: deviceHeight,
   };
 
+  componentDidMount() {
+    const { scrollToIndex } = this.props;
+    if (scrollToIndex) {
+      this.scrollToIndex(scrollToIndex);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     this.scrollToIndex(nextProps.scrollToIndex);
   }
