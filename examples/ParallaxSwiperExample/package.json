@@ -13,7 +13,7 @@
     "react-native": "0.50.4",
     "react-native-blur": "^3.2.2",
     "react-native-linear-gradient": "^2.3.0",
-    "react-native-parallax-swiper": "file:../../",
+    "react-native-parallax-swiper": "^1.0.0",
     "react-native-typography": "https://github.com/zachgibson/react-native-typography",
     "react-native-video": "^2.0.0",
     "react-navigation": "^1.0.0-beta.21"
