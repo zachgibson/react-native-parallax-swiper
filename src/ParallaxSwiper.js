@@ -42,7 +42,7 @@ class ParallaxSwiper extends Component {
   };
 
   scrollToIndex(i) {
-    const { vertical, dividerWidth, animatedValue } = this.props;
+    const { vertical, dividerWidth, animatedValue, onMomentumScrollToIndex } = this.props;
 
     const index = vertical
       ? i * this.state.height
@@ -61,6 +61,8 @@ class ParallaxSwiper extends Component {
     if (!this.animatedScrollViewHasScrolled) {
       this.animatedScrollViewHasScrolled = true;
     }
+    
+    onMomentumScrollToIndex(index);
   }
 
   animatedScrollViewHasScrolled = false;
@@ -221,6 +223,7 @@ ParallaxSwiper.propTypes = {
   },
   showsHorizontalScrollIndicator: PropTypes.bool,
   onMomentumScrollEnd: PropTypes.func,
+  onMomentumScrollToIndex: PropTypes.func,
   children: PropTypes.arrayOf((propValue, key, componentName) => {
     const childComponentName = propValue[key].type.displayName;
     if (!/ParallaxSwiperPage/.test(childComponentName)) {
@@ -250,6 +253,7 @@ ParallaxSwiper.defaultProps = {
   showsVerticalScrollIndicator: false,
   animatedValue: new Animated.Value(0),
   onMomentumScrollEnd: () => null,
+  onMomentumScrollToIndex: () => null
   scrollToIndex: 0,
   scrollEnabled: true,
   showProgressBar: false,
