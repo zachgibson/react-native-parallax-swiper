@@ -16,8 +16,11 @@ class ParallaxSwiper extends Component {
 
   componentDidMount() {
     const { scrollToIndex } = this.props;
+
     if (scrollToIndex) {
-      this.scrollToIndex(scrollToIndex);
+      setTimeout(() => {
+        this.scrollToIndex(scrollToIndex, false);
+      });
     }
   }
 
@@ -41,26 +44,22 @@ class ParallaxSwiper extends Component {
     this.setState({ width, height });
   };
 
-  scrollToIndex(i) {
+  scrollToIndex(index, animated = true) {
     const { vertical, dividerWidth, animatedValue } = this.props;
-
-    const index = vertical
-      ? i * this.state.height
-      : i * (this.state.width + dividerWidth);
+    const pageWidth = this.state.width + dividerWidth;
+    const pageHeight = this.state.height;
+    const scrollOffset = vertical ? index * pageHeight : index * pageWidth;
 
     if (!this.animatedScrollViewHasScrolled) {
-      animatedValue.setValue(index);
+      animatedValue.setValue(scrollOffset);
+      this.animatedScrollViewHasScrolled = true;
     }
 
     this.animatedScrollView._component.scrollTo({
-      x: vertical ? 0 : index,
-      y: vertical ? index : 0,
-      animated: true,
+      x: vertical ? 0 : scrollOffset,
+      y: vertical ? scrollOffset : 0,
+      animated,
     });
-
-    if (!this.animatedScrollViewHasScrolled) {
-      this.animatedScrollViewHasScrolled = true;
-    }
   }
 
   animatedScrollViewHasScrolled = false;
