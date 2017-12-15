@@ -19,6 +19,8 @@ Configurable parallax swiper based on an iOS pattern.
 
 ## Examples
 
+<img alt="React Native Parallax Swiper Expo QR code" src="images/QR-code.png" width="160px"/>
+
 Check out the GIF examples above via [Expo](https://expo.io/@zachgibson/ParallaxSwiperExample). Or clone this repo and:
 
 ```shell
