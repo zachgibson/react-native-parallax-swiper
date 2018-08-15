@@ -28,6 +28,16 @@ class ParallaxSwiper extends Component {
     this.scrollToIndex(nextProps.scrollToIndex);
   }
 
+  onBeginDrag(e){
+    const { onScrollBeginDrag } = this.props;
+    onScrollBeginDrag?onScrollBeginDrag():null;
+  }
+
+  onScrollBegin(e){
+    const { onMomentumScrollBegin } = this.props;
+    onMomentumScrollBegin?onMomentumScrollBegin():null;
+  }
+
   onScrollEnd(e) {
     const { vertical, onMomentumScrollEnd } = this.props;
     const contentOffset = vertical
@@ -81,6 +91,7 @@ class ParallaxSwiper extends Component {
       progressBarThickness,
       progressBarBackgroundColor,
       progressBarValueBackgroundColor,
+      heigth
     } = this.props;
 
     return (
@@ -94,7 +105,7 @@ class ParallaxSwiper extends Component {
             width: vertical
               ? this.state.width
               : this.state.width + dividerWidth,
-            height: this.state.height,
+            height: heigth?heigth:this.state.height,
             backgroundColor,
           }}
           horizontal={!vertical}
@@ -113,6 +124,8 @@ class ParallaxSwiper extends Component {
           showsVerticalScrollIndicator={showsVerticalScrollIndicator}
           showsHorizontalScrollIndicator={showsHorizontalScrollIndicator}
           onMomentumScrollEnd={e => this.onScrollEnd(e)}
+          onMomentumScrollBegin={e => this.onScrollBegin(e)}
+          onScrollBeginDrag={e => this.onBeginDrag()}
         >
           {React.Children.map(children, (child, i) => {
             const dividerBackgroundColor =
