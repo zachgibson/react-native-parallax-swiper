@@ -220,7 +220,7 @@ This component is inspired by an iOS pattern that no react-native-parallax-whate
 
 ## Contributors
 
-| [<img src="https://avatars0.githubusercontent.com/u/2807897?v=4&s=460" width="80px;"/><br /><sub>Chris LeBlanc</sub>](https://github.com/LeBlaaanc)<br />[💻] |
+| [<img src="https://avatars0.githubusercontent.com/u/2807897?v=4&s=460" width="80px;"/><br /><sub>Chris LeBlanc</sub>](https://github.com/spacesuitdiver)<br />[💻] |
 | :-----------------------------------------------------------------------------------------------------------------------------------------------------------: |
 
 
