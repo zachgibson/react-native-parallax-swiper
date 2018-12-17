@@ -8,9 +8,9 @@ Configurable parallax swiper based on an iOS pattern.
 
 **Features**
 
-* **Flexible.** Pass your own Animated.Value and use that value for both ParallaxSwiper and your own UI.
-* **Performant.** Leverages useNativeDriver for 60FPS and no latency.
-* **Cross-platform.** Implement your parallax on both iOS and Android.
+* **Flexible.** Share one `Animated.Value` between ParallaxSwiper and your own UI.
+* **Performant.** Runs on the native thread for 60FPS with no latency.
+* **Cross-platform.** Works on both iOS and Android.
 * **Progress Bar.** Horizontal or vertical progress bar.
 
 ![Twitter Moments Demo](https://user-images.githubusercontent.com/10658888/30244667-636cfc0e-9588-11e7-9805-3a0c5649ab4b.gif)  
@@ -21,7 +21,7 @@ Configurable parallax swiper based on an iOS pattern.
 
 <img alt="React Native Parallax Swiper Expo QR code" src="images/QR-code.png" width="160px"/>
 
-Check out the GIF examples above via [Expo](https://expo.io/@zachgibson/ParallaxSwiperExample). Or clone this repo and:
+Clone this repo and:
 
 ```shell
 $ cd examples/ParallaxSwiperExample
