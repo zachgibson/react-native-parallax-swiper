@@ -169,7 +169,7 @@ class ParallaxSwiper extends Component {
                           inputRange: [
                             0,
                             (this.state.width + dividerWidth) *
-                                (children.length - 1),
+                                Math.max(children.length - 1, 1),
                           ],
                           outputRange: [-this.state.width, 0],
                           extrapolate: 'clamp',
@@ -180,7 +180,7 @@ class ParallaxSwiper extends Component {
                         ? animatedValue.interpolate({
                           inputRange: [
                             0,
-                            this.state.height * (children.length - 1),
+                            this.state.height * Math.max(children.length - 1, 1),
                           ],
                           outputRange: [-this.state.height, 0],
                           extrapolate: 'clamp',
