@@ -6,7 +6,7 @@ import ParallaxSwiperPage, {
   ParallaxSwiperPagePropTypes,
 } from './ParallaxSwiperPage';
 
-const { width: deviceWidth, height: deviceHeight } = Dimensions.get('window');
+const { width: deviceWidth, height: deviceHeight } = Dimensions.get('screen');
 
 class ParallaxSwiper extends Component {
   state = {
