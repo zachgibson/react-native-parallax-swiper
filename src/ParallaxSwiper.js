@@ -55,7 +55,7 @@ class ParallaxSwiper extends Component {
       this.animatedScrollViewHasScrolled = true;
     }
 
-    this.animatedScrollView._component.scrollTo({
+    this.animatedScrollView._component?.scrollTo({
       x: vertical ? 0 : scrollOffset,
       y: vertical ? scrollOffset : 0,
       animated,
